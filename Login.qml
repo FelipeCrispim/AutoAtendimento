@@ -1,9 +1,11 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Material 2.1
+
 Item {
     height: root.height
     width: root.width
+
     Rectangle {
         id: recEsquerdo
         height: parent.height *0.009

@@ -25,27 +25,27 @@ Item {
 
 
     Component {
-            id: sectionHeading
-            Rectangle {
-                width: listPedido.width
-                height: listPedido.height/10
-                color: "white"
-                Text {
-                    text: section
-                    font.bold: true
-                    font.family: "Roboto"
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: 20
-                }
+        id: sectionHeading
+        Rectangle {
+            width: listPedido.width
+            height: listPedido.height/10
+            color: "white"
+            Text {
+                text: section
+                font.bold: true
+                font.family: "Roboto"
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 20
             }
         }
+    }
     Component {
         id: contactDelegate
         Rectangle {
             id: recDelegate
             width: listPedido.width; height: listPedido.height/10
             border.color: "grey"
-            radius: 5
+            //            radius: 5
             Text { text: produto;
                 font.family: "Roboto"
                 font.pixelSize: 20
@@ -638,31 +638,22 @@ Item {
         width: parent.width
         color: Material.accent
 
-
-        Text {
-            id: panePedidoText
-            anchors.bottom: panePedido.top
-            anchors.bottomMargin: 5
-            anchors.left: panePedido.left
-            text: qsTr("Escolha um produto de cada vez.")
-            color: "white"
-            font.family: "Roboto"
-            font.pixelSize: 25
-        }
-
-        Pane{
+        Rectangle {
             id: panePedido
-            height: parent.height*0.87
+            height: parent.height*0.93
             width: parent.width*0.46
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.verticalCenter: parent.verticalCenter
             Material.elevation: 13
             clip: true
+
             ListView{
                 id: listPedido
                 spacing: 2
                 anchors.fill: parent
+                topMargin: 40
+                anchors.margins: 10
                 model: contactModel
                 delegate: contactDelegate
                 section.property: "chave"
@@ -670,31 +661,24 @@ Item {
                 section.delegate: sectionHeading
             }
 
+            TitleBar {
+                title: "Escolha uma opção abaixo"
+                height: 60
+                width: parent.width
+                anchors.top: panePedido.top
+            }
         }
 
-        Text {
-            id: paneResultadoText
-            anchors.bottom: paneResultado.top
-            anchors.bottomMargin: 5
-            anchors.left: paneResultado.left
-            text: qsTr("Seu Pedido.")
-            font.family: "Roboto"
-            color: "white"
-            font.pixelSize: 25
-        }
-
-        Pane{
+        Rectangle {
             id: paneResultado
-            height: parent.height*0.87
+            height: parent.height*0.93
             width: parent.width*0.46
             anchors.right: parent.right
             anchors.rightMargin: 10
             anchors.verticalCenter: parent.verticalCenter
             clip: true
-            //anchors.left: panePedido.right
-            //anchors.leftMargin: 3
-            //anchors.top: panePedido.top
             Material.elevation: 13
+
             Rectangle{
                 id: recPaneResultado
                 height: parent.height * 0.7
@@ -715,7 +699,7 @@ Item {
                         id: recListResultado
                         width: listResultado.width; height: listResultado.height/4
                         border.color: "grey"
-                        radius: 5
+                        //                        radius: 5
                         clip: true
                         Text {
                             id: textListResultado
@@ -780,6 +764,7 @@ Item {
                 height: paneResultado.height*0.3
                 width: paneResultado.width*0.962
                 anchors.top: recPaneResultado.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
                 //border.color: "black"
 
                 Text {
@@ -795,42 +780,56 @@ Item {
 
                 }
 
-                Button {
-                    id: finalizarButton
+                Row {
+                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.margins: 10
                     anchors.bottom: parent.bottom
-                    anchors.left: parent.left
-                    //anchors.rightMargin: 20
-                    height: paneResultado.height *0.15
-                    width: paneResultado.width * 0.45
-                    text: "Finalizar"
-                    font.family: "Roboto"
-                    focus: true
-                    Material.background: "#4CAF50"
-                    Material.foreground: "white"
-                    font.pixelSize: 20
-                    onClicked: {
-                        stackView.push(telaPagamento)
-                    }
-                }
-                Button {
-                    id: cancelarButton
-                    anchors.bottom: parent.bottom
-                    anchors.right: parent.right
-                    height: paneResultado.height *0.15
-                    width: paneResultado.width * 0.45
-                    text: "Cancelar"
-                    font.family: "Roboto"
-                    focus: true
-                    Material.background: "#ED3237"
-                    Material.foreground: "white"
-                    font.pixelSize: 20
-                    onClicked: {
-                        listResultado.model.clear()
-                        valorFinal = 0
-                        stackView.pop()
+                    spacing: 20
 
+                    Button {
+                        id: finalizarButton
+//                        anchors.bottom: parent.bottom
+//                        anchors.left: parent.left
+                        //anchors.rightMargin: 20
+                        height: paneResultado.height *0.15
+                        width: paneResultado.width * 0.45
+                        text: "Finalizar"
+                        font.family: "Roboto"
+                        focus: true
+                        Material.background: "#4CAF50"
+                        Material.foreground: "white"
+                        font.pixelSize: 20
+                        onClicked: {
+                            stackView.push(telaPagamento)
+                        }
+                    }
+                    Button {
+                        id: cancelarButton
+//                        anchors.bottom: parent.bottom
+//                        anchors.right: parent.right
+                        height: paneResultado.height *0.15
+                        width: paneResultado.width * 0.45
+                        text: "Cancelar"
+                        font.family: "Roboto"
+                        focus: true
+                        Material.background: "#ED3237"
+                        Material.foreground: "white"
+                        font.pixelSize: 20
+                        onClicked: {
+                            listResultado.model.clear()
+                            valorFinal = 0
+                            stackView.pop()
+
+                        }
                     }
                 }
+            }
+
+            TitleBar {
+                title: "Seu Pedido"
+                height: 60
+                width: parent.width
+                anchors.top: panePedido.top
             }
         }
     }
