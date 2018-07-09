@@ -689,9 +689,8 @@ Item {
                 ListView{
                     id: listResultado
                     anchors.fill: parent
-                    //anchors.top: paneResultado.top
-                    //  width: paneResultado.width
-                    //anchors.bottom: finalizarButton.top
+                    topMargin: 60
+                    anchors.margins: 10
                     model: ListModel{}
                     spacing: 2
                     delegate: Rectangle{
@@ -829,7 +828,7 @@ Item {
                 title: "Seu Pedido"
                 height: 60
                 width: parent.width
-                anchors.top: panePedido.top
+                anchors.top: paneResultado.top
             }
         }
     }

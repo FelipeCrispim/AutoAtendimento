@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>galeto.png</file>
         <file>lixeira.png</file>
+        <file>money.png</file>
+        <file>card.png</file>
     </qresource>
 </RCC>
