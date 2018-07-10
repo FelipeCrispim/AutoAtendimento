@@ -283,6 +283,7 @@ Item {
                 }
                 Button{
                     id: buttonFinalizarPedido1
+                    enabled: false
                     anchors.top: columnRetirarPedido1.bottom
                     anchors.left: parent.left
                     anchors.leftMargin: parent.width*0.3

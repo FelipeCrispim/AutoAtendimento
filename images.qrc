@@ -4,5 +4,7 @@
         <file>lixeira.png</file>
         <file>money.png</file>
         <file>card.png</file>
+        <file>logo.png</file>
+        <file>background.jpg</file>
     </qresource>
 </RCC>
