@@ -58,9 +58,9 @@ Item {
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
                         font.pixelSize: 20
-                        icon.source: "qrc:/money.png"
-                        icon.height: btnMoney.height*0.82
-                        icon.width: btnMoney.height*0.82
+                       // icon.source: "qrc:/money.png"
+                        //icon.height: btnMoney.height*0.82
+                        //icon.width: btnMoney.height*0.82
                         onClicked: {
                             lblPayment.text = "Por favor, informe-nos para quanto será o troco do valor de X reais"
                             lblPayment.width = panePagamento.width*0.8
@@ -79,9 +79,9 @@ Item {
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
                         font.pixelSize: 20
-                        icon.source: "qrc:/card.png"
-                        icon.height: btnCard.height*0.82
-                        icon.width: btnCard.height*0.82
+                        //icon.source: "qrc:/card.png"
+                        //icon.height: btnCard.height*0.82
+                        //icon.width: btnCard.height*0.82
                         onClicked: {
                         }
                     }

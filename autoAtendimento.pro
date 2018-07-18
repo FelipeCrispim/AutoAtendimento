@@ -1,9 +1,10 @@
 QT += qml quick
-
+QT += network
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    triangle.cpp
+    triangle.cpp \
+    client.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 HEADERS += \
-    triangle.h
+    triangle.h \
+    client.h
