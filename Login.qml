@@ -18,7 +18,7 @@ Item {
     FastBlur {
         anchors.fill: bug
         source: bug
-        radius: 70
+        radius: 50
     }
     Column {
         spacing: 80

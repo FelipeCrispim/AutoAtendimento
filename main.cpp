@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    client clientt;
-    clientt.doConnect("oloco meu");
+//    client clientt;
+//    clientt.doConnect("oloco meu");
 
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

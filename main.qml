@@ -12,7 +12,10 @@ ApplicationWindow {
         id: stackView
         anchors.fill: parent
         initialItem: telaLogin
-
+        function restart(){
+            stackView.clear()
+            stackView.push(telaLogin)
+        }
     }
     Component{
         id: telaLogin
