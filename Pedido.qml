@@ -33,7 +33,7 @@ Item {
             Text {
                 text: section
                 font.bold: true
-                font.family: "Roboto"
+                font.family: "Cursive"
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 20
             }
@@ -43,18 +43,18 @@ Item {
         id: contactDelegate
         Rectangle {
             id: recDelegate
-            width: listPedido.width; height: listPedido.height/10
-            border.color: "grey"
+            width: parent.width; height: listPedido.height/10
+//            border.color: "grey"
             //            radius: 5
             Text { text: produto;
-                font.family: "Roboto"
+                font.family: "Cursive"
                 font.pixelSize: 20
                 anchors.left: recDelegate.left
                 anchors.leftMargin: 10
                 anchors.verticalCenter: recDelegate.verticalCenter
             }
             Text { text: '<b>R$: ' + valor + '</b>';
-                font.family: "Roboto"
+                font.family: "Cursive"
                 font.pixelSize: 20
                 anchors.right: recDelegate.right
                 anchors.rightMargin: 10
@@ -132,6 +132,11 @@ Item {
                     //anchors.bottom: flickable.bottom
                     orientation: Qt.Vertical }       // uncomment to test
 
+                ButtonGroup {
+                    id: beansGroup
+                    buttons: columnFeijaoPedido1.children
+                    onClicked: console.log("clicked:", button.text)
+                }
                 Column{
                     id: columnFeijaoPedido1
                     anchors.top: popUpPedido1.top
@@ -140,28 +145,33 @@ Item {
                     Text {
                         id: textFeijaoPedido1
                         text: qsTr("Escolha o Feijão")
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         font.pixelSize: 20
                     }
                     RadioButton{
                         id: buttonFeijaoTropeiro
                         text: "Feijão Tropeiro"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         checked: true
                         height: 35
                     }
                     RadioButton{
                         id: buttonFeijaoCaseiro
                         text: "Feijão Caseiro"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     RadioButton{
                         id: buttonSemFeijao
                         text: "Sem Feijão"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
+                }
+                ButtonGroup {
+                    id: mayonnaiseGroup
+                    buttons: columnMaionesePedido1.children
+                    onClicked: console.log("clicked:", button.text)
                 }
                 Column{
                     id: columnMaionesePedido1
@@ -171,28 +181,33 @@ Item {
                     Text {
                         id: textMaionesePedido1
                         text: qsTr("Escolha entre Maionese ou Purê")
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         font.pixelSize: 20
                     }
                     RadioButton{
                         id: buttonMaionese
                         height: 35
                         text: "Maionese"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         checked: true
                     }
                     RadioButton{
                         id: buttonPure
                         text: "Purê"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     RadioButton{
                         id: buttonMaionesePure
                         text: "Sem Maionese e Sem Purê"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
+                }
+                ButtonGroup {
+                    id: proteinGroup
+                    buttons: columnProteinaPedido1.children
+                    onClicked: console.log("clicked:", button.text)
                 }
                 Column{
                     id: columnProteinaPedido1
@@ -202,13 +217,13 @@ Item {
                     Text {
                         id: textProteinaPedido1
                         text: qsTr("Escolha a Parte do Galeto")
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         font.pixelSize: 20
                     }
                     RadioButton{
                         id: buttonCoxa
                         height: 35
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         checked: true
                         text: "Coxa e Sobre-Coxa"
 
@@ -216,7 +231,7 @@ Item {
                     RadioButton{
                         id: buttonPeito
                         text: "Peito e Asa"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                 }
@@ -228,56 +243,55 @@ Item {
                     Text {
                         id: textRetirarPedido1
                         text: qsTr("Deseja modificar o Acompanhamento? O acrescimo ou retirada não muda\no valor nem a quantidade total de comida")
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         font.pixelSize: 20
                     }
                     CheckBox{
                         id: buttonSemArroz
                         height: 35
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         text: "Sem Arroz"
-
                     }
                     CheckBox{
                         id: buttonSemMacarrao
                         text: "Sem Macarrão"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonSemFritas
                         text: "Sem Fritas"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonMaisArroz
                         text: "Mais Arroz"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonMaisMacarrao
                         text: "Mais Macarrao"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonMaisFritas
                         text: "Mais Fritas"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonMaisFeijao
                         text: "Mais Feijão"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                     CheckBox{
                         id: buttonMaisMaionese
                         text: "Mais Maionese ou Purê"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         height: 35
                     }
                 }
@@ -291,235 +305,20 @@ Item {
                     height: popUpPedido1.height*0.1
                     width: popUpPedido1.width * 0.4
                     text: "Finalizar"
-                    font.family: "Roboto"
+                    font.family: "Cursive"
                     focus: true
                     Material.background: "#4CAF50"
                     Material.foreground: "white"
                     font.pixelSize: 20
                     onClicked: {
-                        var aux = 0
-                        if(buttonFeijaoTropeiro.checked){
-                            aux++
-                            if(aux == 4){
-                                pedidofinal1 = pedidofinal1 + "F.Tropeiro" + "\n"
-                                aux = 0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "F.Tropeiro" + "\\ "
-                            }
+                        pedidofinal1 += beansGroup.checkedButton.text +"\\ "+ mayonnaiseGroup.checkedButton.text +"\\ "+
+                                proteinGroup.checkedButton.text
 
-
+                        for(var i=1; i< columnRetirarPedido1.children.length; i++){
+                            if(columnRetirarPedido1.children[i].checked)
+                                pedidofinal1 += "\\ "+columnRetirarPedido1.children[i].text
                         }
-                        if(buttonFeijaoCaseiro.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "F.Caseiro" + "\n"
-                                aux = 0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "F.Caseiro" + "\\ "
 
-                            }
-
-
-                        }
-                        if(buttonSemFeijao.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "Sem Feijao" + "\n"
-                                aux = 0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "Sem Feijao" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaionese.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + buttonMaionese.text + "\n"
-                                aux = 0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + buttonMaionese.text + "\\ "
-                            }
-
-                        }
-                        if(buttonPure.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + buttonPure.text + "\n"
-                                aux = 0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + buttonPure.text + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaionesePure.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "SemMaioPure" + "\n"
-                                aux=0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "SemMaioPure" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonCoxa.checked){
-                            aux++
-                            if(aux==4){
-                                if(buttonCoxa.text == "Bem Passada"){
-                                    pedidofinal1 = pedidofinal1 + "Passada" + "\n"
-                                }
-                                else{
-                                    pedidofinal1 = pedidofinal1 + "Coxa" + "\n"
-                                }
-                                aux=0
-                            }
-                            else{
-                                if(buttonCoxa.text == "Bem Passada"){
-                                    pedidofinal1 = pedidofinal1 + "Passada" + "\\"
-                                }
-                                else{
-                                    pedidofinal1 = pedidofinal1 + "Coxa" + "\\ "
-                                }
-                            }
-
-                        }
-                        if(buttonPeito.checked){
-                            aux++
-                            if(aux==4){
-                                if(buttonPeito.text == "Ao Ponto"){
-                                    pedidofinal1 = pedidofinal1 + "Ao Ponto" + "\n"
-                                }
-                                else{
-                                    pedidofinal1 = pedidofinal1 + "Peito" + "\n"
-                                }
-                                aux=0
-                            }
-                            else{
-                                if(buttonPeito.text == "Ao Ponto"){
-                                    pedidofinal1 = pedidofinal1 + "Ao Ponto" + "\\"
-                                }
-                                else{
-                                    pedidofinal1 = pedidofinal1 + "Peito" + "\\"
-                                }
-                            }
-
-                        }
-                        if(buttonSemArroz.checked){
-                            aux++
-                            if(aux==4){
-
-                                pedidofinal1 = pedidofinal1 + "SemArroz" + "\n"
-                                aux=0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "SemArroz" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonSemFeijao.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "SemFeijao" + "\n"
-                                aux=0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "SemFeijao" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonSemFritas.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "SemFritas" + "\n"
-                                aux=0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "SemFritas" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonSemMacarrao.checked){
-                            aux++
-                            if(aux==4){
-                                aux=0
-                                pedidofinal1 = pedidofinal1 + "SemMacarrao" + "\n"
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "SemMacarrao" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaisArroz.checked){
-                            aux++
-                            if(aux==4){
-                                aux=0
-                                pedidofinal1 = pedidofinal1 + "+Arroz" + "\n"
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "+Arroz" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaisFeijao.checked){
-                            aux++
-                            if(aux==4){
-                                pedidofinal1 = pedidofinal1 + "+Feijao" + "\n"
-                                aux=0
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "+Feijao" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaisFritas.checked){
-                            aux++
-                            if(aux==4){
-                                aux=0
-                                pedidofinal1 = pedidofinal1 + "+Fritas" + "\n"
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "+Fritas" + "\\ "
-
-                            }
-
-                        }
-                        if(buttonMaisMacarrao.checked){
-                            aux++
-                            if(aux==4){
-                                aux =0
-                                pedidofinal1 = pedidofinal1 + "+Macarrao" + "\n"
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "+Macarrao" + "\\ "
-                            }
-
-                        }
-                        if(buttonMaisMaionese.checked){
-                            aux++
-                            if(aux==4){
-                                aux=0
-                                pedidofinal1 = pedidofinal1 + "+MaioOuPure" + "\n"
-                            }
-                            else{
-                                pedidofinal1 = pedidofinal1 + "+MaioOuPure" + "\\ "
-
-                            }
-
-                        }
                         listResultado.model.append({textResultado: pedidofinal1, valorResultado: auxvalor1})
                         //console.log(auxIndex)
                         buttonFeijaoTropeiro.checked = true
@@ -573,7 +372,7 @@ Item {
                     Label{
                         id: labelPedido2
                         text: "Escolha a quantidade"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         font.pixelSize: 20
                     }
 
@@ -589,7 +388,7 @@ Item {
                         //height: paneResultado.height *0.15
                         width: popUpPedido2.width*0.4
                         text: "Finalizar"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         focus: true
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
@@ -649,12 +448,13 @@ Item {
             Material.elevation: 13
             clip: true
 
+            color: "grey"
             ListView{
                 id: listPedido
                 spacing: 2
                 anchors.fill: parent
                 topMargin: 40
-                anchors.margins: 10
+//                anchors.margins: 10
                 model: contactModel
                 delegate: contactDelegate
                 section.property: "chave"
@@ -664,7 +464,7 @@ Item {
 
             TitleBar {
                 title: "Escolha uma opção abaixo"
-                height: 60
+                height: 70
                 width: parent.width
                 anchors.top: panePedido.top
             }
@@ -701,11 +501,13 @@ Item {
                         border.color: "grey"
                         //                        radius: 5
                         clip: true
+
                         Text {
                             id: textListResultado
                             text: textResultado
+                            wrapMode: Text.WordWrap
                             width: recListResultado.width*0.7
-                            font.family: "Roboto"
+                            font.family: "Cursive"
                             font.pixelSize: 20
                             anchors.left: recListResultado.left
                             anchors.leftMargin: 10
@@ -716,7 +518,7 @@ Item {
                             text: '<b>R$: ' + valorResultado + '</b>';
                             anchors.left: textListResultado.right
                             anchors.leftMargin: textListResultado.width*0.04
-                            font.family: "Roboto"
+                            font.family: "Cursive"
                             font.pixelSize: 20
                             anchors.verticalCenter: buttonExcluirResultado.verticalCenter
                         }
@@ -774,7 +576,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     anchors.topMargin: parent.height*0.2
-                    font.family: "Roboto"
+                    font.family: "Cursive"
                     font.pixelSize: 20
                     text: "Valor Total <b>R$:  " + valorFinal + "</b>"
 
@@ -794,7 +596,7 @@ Item {
                         height: paneResultado.height *0.15
                         width: paneResultado.width * 0.45
                         text: "Finalizar"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         focus: true
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
@@ -810,7 +612,7 @@ Item {
                         height: paneResultado.height *0.15
                         width: paneResultado.width * 0.45
                         text: "Cancelar"
-                        font.family: "Roboto"
+                        font.family: "Cursive"
                         focus: true
                         Material.background: "#ED3237"
                         Material.foreground: "white"
