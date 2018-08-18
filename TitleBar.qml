@@ -38,7 +38,7 @@ Rectangle {
 
     Text {
         id: words
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
         anchors.leftMargin: 10
         anchors.left: parent.left
         text: root.title

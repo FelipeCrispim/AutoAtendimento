@@ -1,6 +1,7 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Material 2.1
+import QtGraphicalEffects 1.0
 
 Item {
     height: root.height
@@ -34,8 +35,16 @@ Item {
                 text: section
                 font.bold: true
                 font.family: "Cursive"
+                leftPadding: 10
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 20
+            }
+            Rectangle {
+                width: parent.width-10
+                height: 2
+                color: "#22333333"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
             }
         }
     }
@@ -44,7 +53,7 @@ Item {
         Rectangle {
             id: recDelegate
             width: parent.width; height: listPedido.height/10
-//            border.color: "grey"
+            //            border.color: "grey"
             //            radius: 5
             Text { text: produto;
                 font.family: "Cursive"
@@ -59,6 +68,13 @@ Item {
                 anchors.right: recDelegate.right
                 anchors.rightMargin: 10
                 anchors.verticalCenter: recDelegate.verticalCenter
+            }
+            Rectangle {
+                width: parent.width -10
+                height: 2
+                color: "#22333333"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
             }
             MouseArea{
                 id: mouseDelegate
@@ -94,6 +110,7 @@ Item {
             }
         }
     }
+
 
     Rectangle{
         id: recPopUp
@@ -297,7 +314,6 @@ Item {
                 }
                 Button{
                     id: buttonFinalizarPedido1
-                    //enabled: false
                     anchors.top: columnRetirarPedido1.bottom
                     anchors.left: parent.left
                     anchors.leftMargin: parent.width*0.3
@@ -432,12 +448,23 @@ Item {
         }
     }
 
+
+
     Rectangle{
         id: recPedido
         height: parent.height
         width: parent.width
-        color: Material.accent
+        color: "#88FF9800"//Material.accent
 
+        DropShadow {
+            anchors.fill: panePedido
+            horizontalOffset: 5
+            verticalOffset: 5
+            radius: 8.0
+            samples: 17
+            color: "#55000000"
+            source: panePedido
+        }
         Rectangle {
             id: panePedido
             height: parent.height*0.93
@@ -448,13 +475,12 @@ Item {
             Material.elevation: 13
             clip: true
 
-            color: "grey"
             ListView{
                 id: listPedido
                 spacing: 2
                 anchors.fill: parent
-                topMargin: 40
-//                anchors.margins: 10
+                topMargin: 70
+                //                anchors.margins: 10
                 model: contactModel
                 delegate: contactDelegate
                 section.property: "chave"
@@ -463,13 +489,31 @@ Item {
             }
 
             TitleBar {
-                title: "Escolha uma opção abaixo"
+                title: "Clique em uma opção abaixo"
                 height: 70
                 width: parent.width
                 anchors.top: panePedido.top
             }
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+//                anchors.margins: 2
+                source: "qrc:/arrow.png"
+                rotation: 180
+                opacity: listPedido.atYEnd ? 0 : 0.5
+                Behavior on opacity { NumberAnimation { duration: 500 } }
+            }
         }
 
+        DropShadow {
+            anchors.fill: paneResultado
+            horizontalOffset: 5
+            verticalOffset: 5
+            radius: 8.0
+            samples: 17
+            color: "#55000000"
+            source: paneResultado
+        }
         Rectangle {
             id: paneResultado
             height: parent.height*0.93
@@ -584,14 +628,14 @@ Item {
 
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.margins: 10
+                    //                    anchors.margins: 10
                     anchors.bottom: parent.bottom
                     spacing: 20
 
                     Button {
                         id: finalizarButton
-//                        anchors.bottom: parent.bottom
-//                        anchors.left: parent.left
+                        //                        anchors.bottom: parent.bottom
+                        //                        anchors.left: parent.left
                         //anchors.rightMargin: 20
                         height: paneResultado.height *0.15
                         width: paneResultado.width * 0.45
@@ -607,8 +651,8 @@ Item {
                     }
                     Button {
                         id: cancelarButton
-//                        anchors.bottom: parent.bottom
-//                        anchors.right: parent.right
+                        //                        anchors.bottom: parent.bottom
+                        //                        anchors.right: parent.right
                         height: paneResultado.height *0.15
                         width: paneResultado.width * 0.45
                         text: "Cancelar"
@@ -628,8 +672,8 @@ Item {
             }
 
             TitleBar {
-                title: "Seu Pedido"
-                height: 60
+                title: "Seu pedido final"
+                height: 70
                 width: parent.width
                 anchors.top: paneResultado.top
             }

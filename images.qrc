@@ -6,5 +6,6 @@
         <file>card.png</file>
         <file>logo.png</file>
         <file>background.jpg</file>
+        <file>arrow.png</file>
     </qresource>
 </RCC>
