@@ -45,5 +45,6 @@ Rectangle {
         color: "white"
         font.family: "Roboto"
         font.pixelSize: 25
+        font.bold: true
     }
 }

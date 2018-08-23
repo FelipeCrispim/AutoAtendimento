@@ -2,6 +2,7 @@ import QtQuick 2.8
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls.Material 2.1
+import QtGraphicalEffects 1.0
 
 Item {
     height: root.height
@@ -10,7 +11,16 @@ Item {
         id: recPedido
         height: parent.height
         width: parent.width
-        color: Material.accent
+        color: "#88FF9800"
+        DropShadow {
+            anchors.fill: container
+            horizontalOffset: 6
+            verticalOffset: 6
+            radius: 8.0
+            samples: 17
+            color: "#55000000"
+            source: container
+        }
         Rectangle {
             id: container
             anchors.centerIn: parent
@@ -21,7 +31,7 @@ Item {
             TitleBar {
                 id: titleBar
                 title: "Escolha a forma de pagamento"
-                height: 60
+                height: 70
                 width: parent.width
                 anchors.top: container.top
             }
@@ -66,7 +76,7 @@ Item {
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
                         font.pixelSize: 20
-                        icon.source: "qrc:/money.png"
+                        icon.source: "qrc:/images/money.png"
                         icon.height: btnMoney.height*0.82
                         icon.width: btnMoney.height*0.82
                         onClicked: {
@@ -136,7 +146,7 @@ Item {
                         Material.background: "#4CAF50"
                         Material.foreground: "white"
                         font.pixelSize: 20
-                        icon.source: "qrc:/card.png"
+                        icon.source: "qrc:/images/card.png"
                         icon.height: btnCard.height*0.82
                         icon.width: btnCard.height*0.82
                         onClicked: {

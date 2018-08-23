@@ -9,7 +9,7 @@ Item {
 
     Image {
         id: bug
-        source: "qrc:/background.jpg"
+        source: "qrc:/images/background.jpg"
         anchors.fill: parent
         smooth: true
         //        visible: false
@@ -32,7 +32,7 @@ Item {
             color: "#88FFFFFF"
             Image {
                 id: imageGaleto
-                source: "qrc:/logo.png"
+                source: "qrc:/images/logo.png"
                 height: parent.height*0.9
                 fillMode: Image.PreserveAspectFit
                 //                anchors.horizontalCenter: parent.horizontalCenter

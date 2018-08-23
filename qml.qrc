@@ -6,5 +6,6 @@
         <file>Pedido.qml</file>
         <file>Pagamento.qml</file>
         <file>TitleBar.qml</file>
+        <file>CustomDialog.qml</file>
     </qresource>
 </RCC>
