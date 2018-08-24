@@ -20,53 +20,41 @@ Item {
         source: bug
         radius: 50
     }
-    Column {
-        spacing: 80
-        anchors.fill: parent
-        topPadding: 50
-        Rectangle {
-            id: fundo
-            height: parent.height*0.35
-            width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: "#88FFFFFF"
-            Image {
-                id: imageGaleto
-                source: "qrc:/images/logo.png"
-                height: parent.height*0.9
-                fillMode: Image.PreserveAspectFit
-                //                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.centerIn: parent
-            }
-        }
-
-        //        Label {
-        //            id: olaText
-        //            text: qsTr("Olá, seja bem-vindo!\nAperte o botão para fazer o pedido!")
-        //            anchors.horizontalCenter: parent.horizontalCenter
-        //            horizontalAlignment: Text.AlignHCenter
-        //            font.family: "Roboto"
-        //            font.pixelSize: 25
-        //            font.bold: true
-        //        }
-        Button {
-            id: loginButton
-            //            anchors.bottom: parent.bottom
-            //            anchors.bottomMargin: 20
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: "Fazer Pedido"
-            font.family: "Roboto"
-            focus: true
-            Material.background: "#4CAF50"
-            Material.foreground: "white"
-            font.pixelSize: 25
-            font.bold: true
-            height: parent.height*0.2
-            width: parent.width*0.25
-            onClicked: {
-                stackView.push(telaPedido)
-            }
+    Rectangle {
+        id: fundo
+        height: parent.height*0.35
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parent.height*0.08
+        color: "#88FFFFFF"
+        Image {
+            id: imageGaleto
+            source: "qrc:/images/logo.png"
+            height: parent.height*0.9
+            fillMode: Image.PreserveAspectFit
+            //                anchors.horizontalCenter: parent.horizontalCenter
+            anchors.centerIn: parent
         }
     }
-
+    Button {
+        id: loginButton
+        //            anchors.bottom: parent.bottom
+        //            anchors.bottomMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parent.height*0.6
+        text: "Fazer Pedido"
+        font.family: "Roboto"
+        focus: true
+        Material.background: "#5cb860"
+        Material.foreground: "white"
+        font.pixelSize: 25
+        font.bold: true
+        height: parent.height*0.2
+        width: parent.width*0.25
+        onClicked: {
+            stackView.push(telaPedido)
+        }
+    }
 }

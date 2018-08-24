@@ -24,7 +24,6 @@ Item {
         ListElement { produto: "Coca-Cola 2l   ";    valor: "8.50"; tipo: 2; chave: "Bebidas"}
     }
 
-
     Component {
         id: sectionHeading
         Rectangle {
@@ -42,7 +41,7 @@ Item {
             Rectangle {
                 width: parent.width-10
                 height: 2
-                color: "#22333333"
+                color: "#11333333"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
             }
@@ -57,22 +56,22 @@ Item {
             //            radius: 5
             Text { text: produto;
                 font.family: "Cursive"
-                font.pixelSize: 20
+                font.pixelSize: 21
                 anchors.left: recDelegate.left
-                anchors.leftMargin: 10
+                anchors.leftMargin: 20
                 anchors.verticalCenter: recDelegate.verticalCenter
             }
             Text { text: '<b>R$: ' + valor + '</b>';
                 font.family: "Cursive"
-                font.pixelSize: 20
+                font.pixelSize: 21
                 anchors.right: recDelegate.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 20
                 anchors.verticalCenter: recDelegate.verticalCenter
             }
             Rectangle {
                 width: parent.width -10
                 height: 2
-                color: "#22333333"
+                color: "#11333333"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
             }
@@ -148,6 +147,7 @@ Item {
                     Label{
                         id: labelPedido2
                         text: "Escolha a quantidade"
+                        anchors.horizontalCenter: parent.horizontalCenter
                         font.family: "Cursive"
                         font.pixelSize: 20
                     }
@@ -156,59 +156,70 @@ Item {
                         id: spinPedido2
                         focusReason: Qt.MouseFocusReason
                         anchors.horizontalCenter: parent.horizontalCenter
+                        font.pointSize: 20
                         width: popUpPedido2.width*0.4
+                        value: 1
                     }
-                    Button {
-                        id: finalizarButtonPedido2
-                        //anchors.rightMargin: 20
-                        //height: paneResultado.height *0.15
-                        width: popUpPedido2.width*0.4
-                        text: "Finalizar"
-                        font.family: "Cursive"
-                        focus: true
-                        Material.background: "#4CAF50"
-                        Material.foreground: "white"
-                        font.pixelSize: 20
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: {
-                            if(spinPedido2.value != 0){
-                                pedidofinal2 = spinPedido2.value + "x " + pedidofinal2
-                                var aux1 = 0
-                                var aux2 = 0
-                                var i = 0
-                                var charr = ""
-                                aux1 = parseFloat(auxvalor2)
-                                aux2 = parseFloat(spinPedido2.value)
-                                aux1 = aux1 * aux2
+                    Row {
+                        spacing: (popUpPedido2.width - buttonOrder2.width*2)/3
+                        Button {
+                            id: buttonOrder2
+                            height: popUpPedido2.height*0.15
+                            width: popUpPedido2.width*0.4
+                            text: "Finalizar"
+                            font.family: "Cursive"
+                            font.bold: true
+                            focus: true
+                            Material.background: "#4CAF50"
+                            Material.foreground: "white"
+                            font.pixelSize: 20
+                            onClicked: {
+                                if(spinPedido2.value != 0){
+                                    pedidofinal2 = spinPedido2.value + "x " + pedidofinal2
+                                    var aux1 = 0
+                                    var aux2 = 0
+                                    var i = 0
+                                    var charr = ""
+                                    aux1 = parseFloat(auxvalor2)
+                                    aux2 = parseFloat(spinPedido2.value)
+                                    aux1 = aux1 * aux2
 
-                                auxvalor2 = aux1.toString()
-                                while(i < auxvalor2.length){
-                                    charr = auxvalor2.charAt(i)
-                                    if(charr == '.'){
-                                        auxvalor2 = auxvalor2 + "0"
-                                        break
+                                    auxvalor2 = aux1.toString()
+                                    while(i < auxvalor2.length){
+                                        charr = auxvalor2.charAt(i)
+                                        if(charr == '.'){
+                                            auxvalor2 = auxvalor2 + "0"
+                                            break
+                                        }
+                                        i = i + 1
                                     }
-                                    i = i + 1
-                                }
-                                if(i == auxvalor2.length){
-                                    auxvalor2 = auxvalor2 + ".00"
-                                }
+                                    if(i == auxvalor2.length){
+                                        auxvalor2 = auxvalor2 + ".00"
+                                    }
 
-                                listResultado.model.append({textResultado: pedidofinal2, valorResultado: auxvalor2})
-                                spinPedido2.value = 0
-                                valorFinal = valorFinal + aux1
-                                popUpPedido2.close()
-                                pedidofinal2 = ""
+                                    listResultado.model.append({textResultado: pedidofinal2, valorResultado: auxvalor2})
+                                    spinPedido2.value = 0
+                                    valorFinal = valorFinal + aux1
+                                    popUpPedido2.close()
+                                    pedidofinal2 = ""
+                                }
                             }
+                        }
+                        Button{
+                            height: popUpPedido2.height*0.15
+                            width: popUpPedido2.width*0.4
+                            text: "Cancelar"
+                            font.pixelSize: 20
+                            font.bold: true
+                            Material.background: "#ef494e"
+                            Material.foreground: "white"
+                            onClicked: popUpPedido2.close()
                         }
                     }
                 }
-
             }
         }
     }
-
-
 
     Rectangle{
         id: recPedido
@@ -249,7 +260,7 @@ Item {
             }
 
             TitleBar {
-                title: "Clique em uma opção abaixo"
+                title: "Clique nas opções abaixo do que deseja"
                 height: 70
                 width: parent.width
                 anchors.top: panePedido.top
@@ -314,9 +325,9 @@ Item {
                     id: listResultado
                     anchors.fill: parent
                     topMargin: 80
-//                    anchors.margins: 10
+                    //                    anchors.margins: 10
                     model: ListModel{}
-//                    spacing: 2
+                    //                    spacing: 2
                     delegate: Rectangle{
                         //  property int indexx: 0
                         id: recListResultado
@@ -330,7 +341,7 @@ Item {
                             font.family: "Cursive"
                             font.pixelSize: 20
                             anchors.left: recListResultado.left
-                            anchors.leftMargin: 10
+                            anchors.leftMargin: 20
                             anchors.verticalCenter: parent.verticalCenter
                         }
                         Text {
@@ -396,28 +407,23 @@ Item {
                     anchors.topMargin: parent.height*0.2
                     font.family: "Cursive"
                     font.pixelSize: 20
-                    text: "<b> Valor Total: " + valorFinal + " R$</b>"
+                    text: "<b> Valor Total R$: " + valorFinal + "</b>"
 
                 }
 
                 Row {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    //                    anchors.margins: 10
                     anchors.bottom: parent.bottom
-                    spacing: 20
-
+                    spacing: (parent.width - finalizarButton.width*2)/3
                     Button {
                         id: finalizarButton
-                        //                        anchors.bottom: parent.bottom
-                        //                        anchors.left: parent.left
-                        //anchors.rightMargin: 20
-                        height: paneResultado.height *0.15
-                        width: paneResultado.width * 0.45
-                        text: "Finalizar"
+                        height: paneResultado.height *0.13
+                        width: paneResultado.width * 0.4
+                        text: "Finalizar o pedido"
                         font.family: "Cursive"
                         font.bold: true
                         focus: true
-                        Material.background: "#4CAF50"
+                        Material.background: "#5cb860"//"#4CAF50"
                         Material.foreground: "white"
                         font.pixelSize: 20
                         onClicked: {
@@ -426,15 +432,13 @@ Item {
                     }
                     Button {
                         id: cancelarButton
-                        //                        anchors.bottom: parent.bottom
-                        //                        anchors.right: parent.right
-                        height: paneResultado.height *0.15
-                        width: paneResultado.width * 0.45
+                        height: paneResultado.height *0.13
+                        width: paneResultado.width * 0.4
                         text: "Cancelar"
                         font.family: "Cursive"
                         font.bold: true
                         focus: true
-                        Material.background: "#ED3237"
+                        Material.background: "#ef494e"//"#ED3237"
                         Material.foreground: "white"
                         font.pixelSize: 20
                         onClicked: {

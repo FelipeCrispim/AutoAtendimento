@@ -73,9 +73,10 @@ Item {
                         text: "Dinheiro"
                         font.family: "Roboto"
                         focus: true
-                        Material.background: "#4CAF50"
+                        Material.background: "#5cb860"
                         Material.foreground: "white"
                         font.pixelSize: 20
+                        font.bold: true
                         icon.source: "qrc:/images/money.png"
                         icon.height: btnMoney.height*0.82
                         icon.width: btnMoney.height*0.82
@@ -102,7 +103,7 @@ Item {
                         text: "Prosseguir"
                         font.family: "Roboto"
                         focus: true
-                        Material.background: "#4CAF50"
+                        Material.background: "#5cb860"
                         Material.foreground: "white"
                         font.pixelSize: 25
                         font.bold: true
@@ -125,7 +126,7 @@ Item {
                         text: "Cancelar"
                         font.family: "Roboto"
                         focus: true
-                        Material.background: "#ED3237"
+                        Material.background: "#ef494e"
                         Material.foreground: "white"
                         font.pixelSize: 25
                         font.bold: true
@@ -143,9 +144,10 @@ Item {
                         text: "Cartão"
                         font.family: "Roboto"
                         focus: true
-                        Material.background: "#4CAF50"
+                        Material.background: "#5cb860"
                         Material.foreground: "white"
                         font.pixelSize: 20
+                        font.bold: true
                         icon.source: "qrc:/images/card.png"
                         icon.height: btnCard.height*0.82
                         icon.width: btnCard.height*0.82
