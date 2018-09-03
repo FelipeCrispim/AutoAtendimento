@@ -1,7 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "triangle.h"
-#include "client.h"
+#include "mqtt_publisher.h"
+#include <qdebug.h>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -11,8 +12,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-//    client clientt;
-//    clientt.doConnect("oloco meu");
+    MQTT_Publisher *publisher = new MQTT_Publisher;
+    bool messageWasSended = publisher->send_message("{pedido:{comida:{farofa}, bebida:{}}}");
+    qDebug() << "MESSAGE WAS SENDED? " << messageWasSended;
 
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

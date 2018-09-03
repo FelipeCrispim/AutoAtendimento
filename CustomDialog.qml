@@ -57,26 +57,26 @@ Dialog {
                 Text {
                     id: textFeijaoPedido1
                     text: qsTr("Escolha o Feijão")
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     font.pixelSize: 20
                 }
                 RadioButton{
                     id: buttonFeijaoTropeiro
                     text: "Feijão Tropeiro"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     checked: true
                     height: 35
                 }
                 RadioButton{
                     id: buttonFeijaoCaseiro
                     text: "Feijão Caseiro"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 RadioButton{
                     id: buttonSemFeijao
                     text: "Sem Feijão"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
             }
@@ -94,26 +94,26 @@ Dialog {
                 Text {
                     id: textMaionesePedido1
                     text: qsTr("Escolha entre Maionese ou Purê")
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     font.pixelSize: 20
                 }
                 RadioButton{
                     id: buttonMaionese
                     height: 35
                     text: "Maionese"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     checked: true
                 }
                 RadioButton{
                     id: buttonPure
                     text: "Purê"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 RadioButton{
                     id: buttonMaionesePure
                     text: "Sem Maionese e Sem Purê"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
             }
@@ -131,13 +131,13 @@ Dialog {
                 Text {
                     id: textProteinaPedido1
                     text: qsTr("Escolha a Parte do Galeto")
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     font.pixelSize: 20
                 }
                 RadioButton{
                     id: buttonCoxa
                     height: 35
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     checked: true
                     text: "Coxa e Sobre-Coxa"
 
@@ -145,7 +145,7 @@ Dialog {
                 RadioButton{
                     id: buttonPeito
                     text: "Peito e Asa"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
             }
@@ -160,55 +160,55 @@ Dialog {
                     text: qsTr("Deseja modificar o Acompanhamento? O acrescimo ou retirada não muda no valor nem a quantidade total de comida")
                     wrapMode: Text.WordWrap
                     width: flickable.width*0.9
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     font.pixelSize: 20
                 }
                 CheckBox{
                     id: buttonSemArroz
                     height: 35
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     text: "Sem Arroz"
                 }
                 CheckBox{
                     id: buttonSemMacarrao
                     text: "Sem Macarrão"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonSemFritas
                     text: "Sem Fritas"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonMaisArroz
                     text: "Mais Arroz"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonMaisMacarrao
                     text: "Mais Macarrao"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonMaisFritas
                     text: "Mais Fritas"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonMaisFeijao
                     text: "Mais Feijão"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonMaisMaionese
                     text: "Mais Maionese ou Purê"
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     height: 35
                 }
             }
@@ -257,7 +257,7 @@ Dialog {
                 height: popUpPedido1.height*0.1
                 width: popUpPedido1.width * 0.4
                 text: "Finalizar"
-                font.family: "Cursive"
+                font.family: "Roboto"
                 font.bold: true
                 focus: true
                 Material.background: "#5cb860"

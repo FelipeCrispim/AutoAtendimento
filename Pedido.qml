@@ -33,7 +33,7 @@ Item {
             Text {
                 text: section
                 font.bold: true
-                font.family: "Cursive"
+                font.family: "Roboto"
                 leftPadding: 10
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 20
@@ -55,14 +55,14 @@ Item {
             //            border.color: "grey"
             //            radius: 5
             Text { text: produto;
-                font.family: "Cursive"
+                font.family: "Roboto"
                 font.pixelSize: 21
                 anchors.left: recDelegate.left
                 anchors.leftMargin: 20
                 anchors.verticalCenter: recDelegate.verticalCenter
             }
             Text { text: '<b>R$: ' + valor + '</b>';
-                font.family: "Cursive"
+                font.family: "Roboto"
                 font.pixelSize: 21
                 anchors.right: recDelegate.right
                 anchors.rightMargin: 20
@@ -148,7 +148,7 @@ Item {
                         id: labelPedido2
                         text: "Escolha a quantidade"
                         anchors.horizontalCenter: parent.horizontalCenter
-                        font.family: "Cursive"
+                        font.family: "Roboto"
                         font.pixelSize: 20
                     }
 
@@ -167,7 +167,7 @@ Item {
                             height: popUpPedido2.height*0.15
                             width: popUpPedido2.width*0.4
                             text: "Finalizar"
-                            font.family: "Cursive"
+                            font.family: "Roboto"
                             font.bold: true
                             focus: true
                             Material.background: "#4CAF50"
@@ -338,7 +338,7 @@ Item {
                             text: textResultado
                             wrapMode: Text.WordWrap
                             width: recListResultado.width*0.7
-                            font.family: "Cursive"
+                            font.family: "Roboto"
                             font.pixelSize: 20
                             anchors.left: recListResultado.left
                             anchors.leftMargin: 20
@@ -349,7 +349,7 @@ Item {
                             text: '<b>R$: ' + valorResultado + '</b>';
                             anchors.right: trashIcon.left
                             anchors.rightMargin: 20
-                            font.family: "Cursive"
+                            font.family: "Roboto"
                             font.pixelSize: 20
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -405,7 +405,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     anchors.topMargin: parent.height*0.2
-                    font.family: "Cursive"
+                    font.family: "Roboto"
                     font.pixelSize: 20
                     text: "<b> Valor Total R$: " + valorFinal + "</b>"
 
@@ -420,7 +420,7 @@ Item {
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
                         text: "Finalizar o pedido"
-                        font.family: "Cursive"
+                        font.family: "Roboto"
                         font.bold: true
                         focus: true
                         Material.background: "#5cb860"//"#4CAF50"
@@ -435,7 +435,7 @@ Item {
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
                         text: "Cancelar"
-                        font.family: "Cursive"
+                        font.family: "Roboto"
                         font.bold: true
                         focus: true
                         Material.background: "#ef494e"//"#ED3237"
