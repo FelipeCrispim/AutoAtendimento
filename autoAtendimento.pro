@@ -1,4 +1,4 @@
-QT += qml quick
+QT += qml quick svg
 QT += network
 CONFIG += c++11
 
@@ -22,7 +22,17 @@ QML_DESIGNER_IMPORT_PATH =
 DEFINES += QT_DEPRECATED_WARNINGS
 
 unix:!macx {
-    LIBS += -LC:/usr/local/lib -LC:/mosquitto -lmosquittopp
+    INCLUDEPATH += /usr/local/include/
+    android: {
+      QT += androidextras
+    #  ANDROID_EXTRA_LIBS += /home/felipecrispim/Downloads/mosquitto/build/lib/cpp/libmosquittopp.so
+    #  INCLUDEPATH += /home/felipecrispim/Downloads/mosquitto/lib/cpp
+      LIBS += -L/usr/local/lib/mosquitto-android/cpp -lmosquittopp
+    }
+    !android:
+    {
+        LIBS += -L/usr/local/lib -lmosquittopp
+    }
 }
 
 macx: {
