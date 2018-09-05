@@ -1,4 +1,5 @@
 #include "mqtt_publisher.h"
+#include <string.h>
 
 MQTT_Publisher::MQTT_Publisher() : mosquittopp(CLIENT_ID)
 {
