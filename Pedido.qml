@@ -6,6 +6,7 @@ import QtGraphicalEffects 1.0
 Item {
     height: root.height
     width: root.width
+    property var listpedidofinal: {"produto": "", "quantidade": "", "valor": "", "acompanhamento": "", "aasa": ""}
     property var pedidofinal1: ""
     property var pedidofinal2: ""
     property var auxvalor1: ""
@@ -83,6 +84,10 @@ Item {
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
                         auxvalor1 = valor
+                        listpedidofinal.produto = produto
+                        listpedidofinal.quantidade = "1"
+                        listpedidofinal.valor = valor
+                        console.log(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
                         //console.log(pedidofinal1)
                         if(produto == "Executivo de Galeto"){
                             orderDialog.textProtein = "Escolha a Parte do Galeto"
