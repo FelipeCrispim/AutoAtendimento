@@ -1,7 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "triangle.h"
 #include "mqtt_publisher.h"
+#include "creatjson.h"
 #include <qdebug.h>
 int main(int argc, char *argv[])
 {
@@ -11,11 +13,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<TriangleItem>("MyShapes", 1, 0, "Triangle");
 
     QQmlApplicationEngine engine;
-
-    MQTT_Publisher *publisher = new MQTT_Publisher;
-    bool messageWasSended = publisher->send_message("{pedido:{comida:{farofa}, bebida:{}}}");
-    qDebug() << "MESSAGE WAS SENDED? " << messageWasSended;
-
+    QQmlContext *context = engine.rootContext();
+    creatjson json;
+    context->setContextProperty("creatjson", QVariant::fromValue(&json));
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

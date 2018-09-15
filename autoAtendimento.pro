@@ -4,7 +4,8 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     triangle.cpp \
-    mqtt_publisher.cpp
+    mqtt_publisher.cpp \
+    creatjson.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -54,4 +55,7 @@ DISTFILES +=
 
 HEADERS += \
     triangle.h \
-    mqtt_publisher.h
+    mqtt_publisher.h \
+    creatjson.h \
+    creatjson.h \
+    creatjson.h

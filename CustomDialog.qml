@@ -19,6 +19,7 @@ Dialog {
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
     onClosed: {
         pedidofinal1 = ""
+        listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
         auxvalor1 = ""
         flickableScroll.position = 0.0
     }
@@ -47,7 +48,7 @@ Dialog {
             ButtonGroup {
                 id: beansGroup
                 buttons: columnFeijaoPedido1.children
-                onClicked: console.log("clicked:", button.text)
+                //onClicked: console.log("clicked:", button.text)
             }
             Column{
                 id: columnFeijaoPedido1
@@ -83,7 +84,7 @@ Dialog {
             ButtonGroup {
                 id: mayonnaiseGroup
                 buttons: columnMaionesePedido1.children
-                onClicked: console.log("clicked:", button.text)
+                //onClicked: console.log("clicked:", button.text)
             }
             Column{
                 id: columnMaionesePedido1
@@ -120,7 +121,7 @@ Dialog {
             ButtonGroup {
                 id: proteinGroup
                 buttons: columnProteinaPedido1.children
-                onClicked: console.log("clicked:", button.text)
+               // onClicked: console.log("clicked:", button.text)
             }
             Column{
                 id: columnProteinaPedido1
@@ -267,12 +268,18 @@ Dialog {
                     pedidofinal1 += beansGroup.checkedButton.text +"\\ "+ mayonnaiseGroup.checkedButton.text +"\\ "+
                             proteinGroup.checkedButton.text
 
+                    listpedidofinal.acompanhamento = beansGroup.checkedButton.text +"\\ "+ mayonnaiseGroup.checkedButton.text +"\\ "+
+                            proteinGroup.checkedButton.text
                     for(var i=1; i< columnRetirarPedido1.children.length; i++){
-                        if(columnRetirarPedido1.children[i].checked)
+                        if(columnRetirarPedido1.children[i].checked){
                             pedidofinal1 += "\\ "+columnRetirarPedido1.children[i].text
+                            listpedidofinal.acompanhamento += "\\ " + columnRetirarPedido1.children[i].text
+                        }
                     }
 
                     listResultado.model.append({textResultado: pedidofinal1, valorResultado: auxvalor1})
+                    //console.log(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
+                    creatjson.addNewProduct(listpedidofinal.produto, listpedidofinal.quantidade, listpedidofinal.valor, listpedidofinal.acompanhamento)
                     //console.log(auxIndex)
                     buttonFeijaoTropeiro.checked = true
                     buttonMaisMaionese.checked = false
@@ -293,6 +300,7 @@ Dialog {
                     buttonSemFeijao.checked = false
                     valorFinal = valorFinal + parseFloat(auxvalor1)
                     popUpPedido1.close()
+                    listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
                     pedidofinal1 = ""
                 }
             }

@@ -6,7 +6,7 @@ import QtGraphicalEffects 1.0
 Item {
     height: root.height
     width: root.width
-    property var listpedidofinal: {"produto": "", "quantidade": "", "valor": "", "acompanhamento": "", "aasa": ""}
+    property var listpedidofinal: {"produto": "", "quantidade": "", "valor": "", "acompanhamento": ""}
     property var pedidofinal1: ""
     property var pedidofinal2: ""
     property var auxvalor1: ""
@@ -15,14 +15,14 @@ Item {
     ListModel{
         id: contactModel
         ListElement { produto: "Executivo de Galeto"; valor: "13.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Boi   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Porco   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Calabresa   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Boi";    valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Porco";    valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Calabresa";    valor: "14.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Galinha Guisada   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Coxa e SobreCoxa   ";    valor: "6.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "Coxa e SobreCoxa";    valor: "6.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa de Frango";   valor: "2.50"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa mista";   valor: "2.00"; tipo: 2; chave: "Carnes"}
-        ListElement { produto: "Coca-Cola 2l   ";    valor: "8.50"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Coca-Cola 2l";    valor: "8.50"; tipo: 2; chave: "Bebidas"}
     }
 
     Component {
@@ -87,7 +87,7 @@ Item {
                         listpedidofinal.produto = produto
                         listpedidofinal.quantidade = "1"
                         listpedidofinal.valor = valor
-                        console.log(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
+                        //console.log(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
                         //console.log(pedidofinal1)
                         if(produto == "Executivo de Galeto"){
                             orderDialog.textProtein = "Escolha a Parte do Galeto"
@@ -106,6 +106,7 @@ Item {
                     }
                     else if(tipo == 2){
                         pedidofinal2 = pedidofinal2 + produto
+                        listpedidofinal.produto = produto
                         auxvalor2 = valor
                         popUpPedido2.open()
                     }
@@ -141,6 +142,7 @@ Item {
                 closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
                 onClosed: {
                     pedidofinal2 = ""
+                    listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
                     auxvalor2 = ""
                 }
 
@@ -188,7 +190,8 @@ Item {
                                     aux1 = parseFloat(auxvalor2)
                                     aux2 = parseFloat(spinPedido2.value)
                                     aux1 = aux1 * aux2
-
+                                    listpedidofinal.quantidade = spinPedido2.value; listpedidofinal.valor = aux1;
+                                    creatjson.addNewProduct(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
                                     auxvalor2 = aux1.toString()
                                     while(i < auxvalor2.length){
                                         charr = auxvalor2.charAt(i)
@@ -206,7 +209,9 @@ Item {
                                     spinPedido2.value = 0
                                     valorFinal = valorFinal + aux1
                                     popUpPedido2.close()
+                                    listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
                                     pedidofinal2 = ""
+                                    spinPedido2.value
                                 }
                             }
                         }
@@ -381,6 +386,7 @@ Item {
                                     }
                                     valorFinal = valorFinal - parseFloat(listResultado.model.get(indexx).valorResultado)
                                     listResultado.model.remove(indexx)
+                                    creatjson.removeProduct(indexx)
                                 }
                             }
                         }
@@ -447,7 +453,11 @@ Item {
                         Material.foreground: "white"
                         font.pixelSize: 20
                         onClicked: {
+                            creatjson.clearJson()
                             listResultado.model.clear()
+                            pedidofinal1 = ""
+                            listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
+                            pedidofinal2 = ""
                             valorFinal = 0
                             stackView.pop()
 

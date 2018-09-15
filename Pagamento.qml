@@ -7,6 +7,9 @@ import QtGraphicalEffects 1.0
 Item {
     height: root.height
     width: root.width
+    property string pay: ""
+    property string name: ""
+    property string change: ""
     Rectangle{
         id: recPedido
         height: parent.height
@@ -81,6 +84,7 @@ Item {
                         icon.height: btnMoney.height*0.82
                         icon.width: btnMoney.height*0.82
                         onClicked: {
+                            pay = "dinheiro"
                             titleBar.title = "Para facilitar o troco, informe quanto será pago"
                             fieldChange.visible = true
                             fieldChange.focus = true
@@ -110,6 +114,15 @@ Item {
                         height: container.height*0.3
                         width: container.width*0.35
                         onClicked: {
+                            if(nextButton.text == "Finalizar"){
+                                name = fieldName.text
+                                change = fieldChange.text
+                                creatjson.addClient(name, pay,change)
+                                //creatjson.finishOrder()
+                                name = ""
+                                pay = ""
+                                change = ""
+                            }
                             if(fieldChange.visible == true) {
                                 titleBar.title = "Informe seu nome para ser chamado"
                                 nextButton.text = "Finalizar"
@@ -133,6 +146,9 @@ Item {
                         height: container.height*0.3
                         width: container.width*0.35
                         onClicked: {
+                            pay = ""
+                            name = ""
+                            change = ""
                             stackView.pop()
                         }
                     }
@@ -152,6 +168,7 @@ Item {
                         icon.height: btnCard.height*0.82
                         icon.width: btnCard.height*0.82
                         onClicked: {
+                            pay = "cartao"
                             titleBar.title = "Informe seu nome para ser chamado"
                             nextButton.visible = true
                             nextButton.text = "Finalizar"
@@ -160,7 +177,7 @@ Item {
                             fieldChange.visible = false
                             fieldName.visible = true
                             fieldName.focus = true
-                            cancelButton.visible = true
+                            cancelButton.visible = true                
                         }
                     }
                 }

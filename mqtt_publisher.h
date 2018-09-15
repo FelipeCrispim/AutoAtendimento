@@ -3,7 +3,6 @@
 
 #include <mosquittopp.h>
 //#include <bits/stdc++.h>
-
 #define MAX_PAYLOAD 80
 #define MQTT_PORT 1883
 #define DEFAULT_KEEP_ALIVE 60
@@ -18,6 +17,7 @@ public:
     MQTT_Publisher();
     ~MQTT_Publisher();
     bool send_message(const char * _message);
+
 };
 
 #endif // MQTT_PUBLISHER_H
