@@ -24,11 +24,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 unix:!macx {
     INCLUDEPATH += /usr/local/include/
+    INCLUDEPATH += /usr/local/Cellar/mosquitto/1.5.1/include/
+
     android: {
       QT += androidextras
-    #  ANDROID_EXTRA_LIBS += /home/felipecrispim/Downloads/mosquitto/build/lib/cpp/libmosquittopp.so
-    #  INCLUDEPATH += /home/felipecrispim/Downloads/mosquitto/lib/cpp
-      LIBS += -L/usr/local/lib/mosquitto-android/cpp -lmosquittopp
+      LIBS += -L/usr/local/lib/mosquitto-android/cpp/ -lmosquittopp
+      LIBS += -L/usr/local/lib/mosquitto-android/ -lmosquitto
+      ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
     }
     !android:
     {
@@ -51,7 +53,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat
 
 HEADERS += \
     triangle.h \
