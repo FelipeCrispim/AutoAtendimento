@@ -28,8 +28,8 @@ unix:!macx {
 
     android: {
       QT += androidextras
-      LIBS += -L/usr/local/lib/mosquitto-android/cpp/ -lmosquittopp
-      LIBS += -L/usr/local/lib/mosquitto-android/ -lmosquitto
+      LIBS += -L$$PWD/android/libs/armeabi-v7a/ -lmosquittopp
+      LIBS += -L$$PWD/android/libs/armeabi-v7a/ -lmosquitto
       ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
     }
     !android:
