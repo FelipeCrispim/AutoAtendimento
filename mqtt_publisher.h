@@ -2,6 +2,7 @@
 #define MQTT_PUBLISHER_H
 
 #include <mosquittopp.h>
+#include <QDebug>
 //#include <bits/stdc++.h>
 #define MAX_PAYLOAD 80
 #define MQTT_PORT 1883

@@ -56,6 +56,4 @@ DISTFILES +=
 HEADERS += \
     triangle.h \
     mqtt_publisher.h \
-    creatjson.h \
-    creatjson.h \
     creatjson.h

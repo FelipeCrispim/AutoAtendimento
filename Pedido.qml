@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.1
 import QtGraphicalEffects 1.0
 
 Item {
+    id: rootPed
     height: root.height
     width: root.width
     property var listpedidofinal: {"produto": "", "quantidade": "", "valor": "", "acompanhamento": ""}
@@ -438,7 +439,7 @@ Item {
                         Material.foreground: "white"
                         font.pixelSize: 20
                         onClicked: {
-                            stackView.push(telaPagamento)
+                            stackView.push(telaPagamento,{"tValue": valorFinal})
                         }
                     }
                     Button {

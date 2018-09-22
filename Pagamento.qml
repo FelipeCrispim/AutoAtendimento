@@ -7,6 +7,7 @@ import QtGraphicalEffects 1.0
 Item {
     height: root.height
     width: root.width
+    property string tValue: ""
     property string pay: ""
     property string name: ""
     property string change: ""
@@ -117,8 +118,8 @@ Item {
                             if(nextButton.text == "Finalizar"){
                                 name = fieldName.text
                                 change = fieldChange.text
-                                creatjson.addClient(name, pay,change)
-                                //creatjson.finishOrder()
+                                creatjson.addClient(name, pay,change, tValue)
+                                creatjson.finishOrder()
                                 name = ""
                                 pay = ""
                                 change = ""

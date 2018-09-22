@@ -1,11 +1,11 @@
+
 #include "creatjson.h"
 
-creatjson::creatjson(QObject *parent) : QObject(parent)
+Creatjson::Creatjson(QObject *parent) : QObject(parent)
 {
 
 }
-
-void creatjson::addNewProduct(QString product, QString quantity, QString value, QString complement)
+void Creatjson::addNewProduct(QString product, QString quantity, QString value, QString complement)
 {
     QJsonObject newObject{
         {"product", product},
@@ -17,24 +17,27 @@ void creatjson::addNewProduct(QString product, QString quantity, QString value, 
     qDebug() << jsonArray;
 }
 
-void creatjson::addClient(QString name, QString pay, QString change)
+void Creatjson::addClient(QString name, QString pay, QString change, QString totalValue)
 {
+    int id = 11;   // décimo primeiro pedido do dia
     QJsonObject newObject{
         {"name", name},
         {"pay", pay},
         {"change", change},
+        {"id", id},
+        {"totalValue", totalValue}
     };
     jsonArray.append(newObject);
     qDebug() << jsonArray;
 }
 
-void creatjson::removeProduct(int index)
+void Creatjson::removeProduct(int index)
 {
     jsonArray.removeAt(index);
     qDebug() << jsonArray;
 }
 
-void creatjson::clearJson()
+void Creatjson::clearJson()
 {
     //for(int i=0; i<jsonArray.size(); i++){
     //    jsonArray.removeAt(i);
@@ -45,21 +48,16 @@ void creatjson::clearJson()
     qDebug() << jsonArray;
 }
 
-void creatjson::finishOrder()
+void Creatjson::finishOrder()
 {
     QJsonDocument jsonDoc(jsonArray);
     QByteArray byteJson = jsonDoc.toJson();
     char* message = byteJson.data();
     MQTT_Publisher *publisher = new MQTT_Publisher();
     if(publisher->send_message(message)){
-        qDebug() << "erro ao enviar";
-    }
-    else{
-        qDebug() << "enviado com sucesso";
         while(jsonArray.count()){
             jsonArray.pop_back();
         }
+        qDebug() << jsonArray;
     }
 }
-
-
