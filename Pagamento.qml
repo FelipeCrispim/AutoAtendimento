@@ -70,6 +70,16 @@ Item {
                 }
                 Row {
                     spacing: 30
+                    AnimatedImage {
+                        id: animCheck
+                        source: "qrc:/images/check.gif"
+                        property int count: animCheck.currentFrame
+                        onCountChanged: {
+                            if(count == 70)
+                                animCheck.playing = false
+                        }
+                    }
+                    /*
                     Button {
                         id: btnMoney
                         height: container.height*0.35
@@ -178,9 +188,10 @@ Item {
                             fieldChange.visible = false
                             fieldName.visible = true
                             fieldName.focus = true
-                            cancelButton.visible = true                
+                            cancelButton.visible = true
                         }
                     }
+                    */
                 }
             }
         }

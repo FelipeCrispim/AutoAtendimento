@@ -444,7 +444,7 @@ Item {
                         id: finalizarButton
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
-                        text: "Finalizar o pedido"
+                        text: "Finalizar"
                         font.family: "Roboto"
                         font.bold: true
                         focus: true

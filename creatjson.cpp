@@ -61,3 +61,7 @@ void Creatjson::finishOrder()
         qDebug() << jsonArray;
     }
 }
+
+bool Creatjson::validatedMqtt() {
+    return m_mqtt;
+}

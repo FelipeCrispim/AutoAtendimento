@@ -6,5 +6,6 @@
         <file>images/logo.png</file>
         <file>images/card.png</file>
         <file>images/money.png</file>
+        <file>images/check.gif</file>
     </qresource>
 </RCC>
