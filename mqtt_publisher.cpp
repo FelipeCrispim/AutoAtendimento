@@ -4,13 +4,15 @@
 MQTT_Publisher::MQTT_Publisher() : mosquittopp(CLIENT_ID)
 {
     mosqpp::lib_init();
+
     if(!connect(BROKER_ADDRESS, MQTT_PORT, DEFAULT_KEEP_ALIVE)){
         qDebug() << "Sucesso ao se conectar";
+        loop_start();
     }
     else{
         qDebug() << "Erro ao se conectar";
     }
-    loop_start();
+
 
 }
 
@@ -29,7 +31,8 @@ bool MQTT_Publisher::send_message(const char *_message)
     else{
         qDebug() << "Erro ao enviar a mensagem";
     }
-    return ( ret == MOSQ_ERR_SUCCESS );
+    return ret;
+//    return ( ret == MOSQ_ERR_SUCCESS );
 }
 
 

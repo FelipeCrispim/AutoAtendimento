@@ -11,6 +11,7 @@ Dialog {
     property alias coxaTextButton: buttonCoxa.text
     property alias peitoTextButton: buttonPeito.text
     property string fatherProduto: ""
+    property int radioButtonFontSize: 18
     height: parent.height
     width: parent.width
     modal: true
@@ -67,7 +68,7 @@ Dialog {
 
                 Text{
                     id: textInfo
-                    text: "Seu prato Acompanha: Arroz, Macarrão, Fritas, Feijão Tropeiro ou Caseiro, Maionese ou Purê.\n"
+                    text: "Seu prato acompanha: Arroz, Macarrão, Fritas, Feijão Tropeiro ou Caseiro, Maionese ou Purê.\n"
                     font.family: "Roboto"
                     font.pixelSize: 20
                     wrapMode: Text.WordWrap
@@ -85,6 +86,7 @@ Dialog {
                 RadioButton{
                     id: buttonFeijaoTropeiro
                     text: "Feijão Tropeiro"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     checked: true
                     height: 35
@@ -92,12 +94,14 @@ Dialog {
                 RadioButton{
                     id: buttonFeijaoCaseiro
                     text: "Feijão Caseiro"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
                 RadioButton{
                     id: buttonSemFeijao
                     text: "Sem Feijão"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
@@ -123,18 +127,21 @@ Dialog {
                     id: buttonMaionese
                     height: 35
                     text: "Maionese"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     checked: true
                 }
                 RadioButton{
                     id: buttonPure
                     text: "Purê"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
                 RadioButton{
                     id: buttonMaionesePure
                     text: "Sem Maionese e Sem Purê"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
@@ -159,6 +166,7 @@ Dialog {
                 RadioButton{
                     id: buttonCoxa
                     height: 35
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     checked: true
                     text: "Coxa e Sobre-Coxa"
@@ -167,6 +175,7 @@ Dialog {
                 RadioButton{
                     id: buttonPeito
                     text: "Peito e Asa"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
@@ -188,18 +197,21 @@ Dialog {
                 CheckBox{
                     id: buttonSemArroz
                     height: 35
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     text: "Sem Arroz"
                 }
                 CheckBox{
                     id: buttonSemMacarrao
                     text: "Sem Macarrão"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }
                 CheckBox{
                     id: buttonSemFritas
                     text: "Sem Fritas"
+                    font.pixelSize: radioButtonFontSize
                     font.family: "Roboto"
                     height: 35
                 }

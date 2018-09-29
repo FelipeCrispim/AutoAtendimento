@@ -1,5 +1,6 @@
-
 #include "creatjson.h"
+
+int MOSQ_SUCCESS = 0;
 
 Creatjson::Creatjson(QObject *parent) : QObject(parent)
 {
@@ -45,23 +46,24 @@ void Creatjson::clearJson()
     while(jsonArray.count()){
         jsonArray.pop_back();
     }
-    qDebug() << jsonArray;
+    qDebug() << __FUNCTION__ << ": "<< jsonArray;
 }
 
-void Creatjson::finishOrder()
+bool Creatjson::finishOrder()
 {
     QJsonDocument jsonDoc(jsonArray);
     QByteArray byteJson = jsonDoc.toJson();
     char* message = byteJson.data();
     MQTT_Publisher *publisher = new MQTT_Publisher();
-    if(publisher->send_message(message)){
+
+    if(publisher->send_message(message) == MOSQ_SUCCESS){
         while(jsonArray.count()){
             jsonArray.pop_back();
         }
-        qDebug() << jsonArray;
+        qDebug() << __FUNCTION__ << ": "<< jsonArray;
+        return true;
+    } else {
+        return false;
     }
 }
 
-bool Creatjson::validatedMqtt() {
-    return m_mqtt;
-}

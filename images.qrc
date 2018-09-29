@@ -7,5 +7,6 @@
         <file>images/card.png</file>
         <file>images/money.png</file>
         <file>images/check.gif</file>
+        <file>images/error.png</file>
     </qresource>
 </RCC>

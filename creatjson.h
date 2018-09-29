@@ -14,7 +14,6 @@
 class Creatjson : public QObject
 {    
     Q_OBJECT
-    Q_PROPERTY(bool validatedMqtt READ validatedMqtt NOTIFY mqttChanged)
 
 public:
     explicit Creatjson(QObject *parent = nullptr);
@@ -22,14 +21,8 @@ public:
     Q_INVOKABLE void addClient(QString name, QString pay, QString change, QString totalValue);
     Q_INVOKABLE void removeProduct(int index);
     Q_INVOKABLE void clearJson();
-    Q_INVOKABLE void finishOrder();
+    Q_INVOKABLE bool finishOrder();
     QJsonArray jsonArray;
-    bool validatedMqtt();
-private:
-    bool m_mqtt;
-signals:
-    void mqttChanged();
-
 public slots:
 };
 

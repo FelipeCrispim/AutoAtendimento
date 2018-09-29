@@ -444,6 +444,7 @@ Item {
                         id: finalizarButton
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
+                        enabled: rootPed.valorFinal == 0? false : true
                         text: "Finalizar"
                         font.family: "Roboto"
                         font.bold: true

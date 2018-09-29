@@ -11,6 +11,13 @@ Item {
     property string pay: ""
     property string name: ""
     property string change: ""
+    Timer {
+        id: timer
+        interval: 5000; running: false; repeat: false
+        onTriggered: {
+            stackView.restart()
+        }
+    }
     Rectangle{
         id: recPedido
         height: parent.height
@@ -39,6 +46,37 @@ Item {
                 width: parent.width
                 anchors.top: container.top
             }
+            Column {
+                id: columnValidate
+                anchors.centerIn: parent
+                visible: false
+                spacing: 50
+                Text {
+                    id: msgValidate
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    topPadding: titleBar.height
+                    width: parent.parent.width
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    text: "Aguarde na mesa. Seu nome será chamado."
+                    font.bold: true
+                    font.family: "Roboto"
+                    font.pixelSize: 20
+                }
+                AnimatedImage {
+                    id: animCheck
+                    property int count: animCheck.currentFrame
+                    source: "qrc:/images/check.gif"
+                    height: parent.parent.height*0.5
+                    width: parent.parent.height*0.5
+                    playing: false
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onCountChanged: {
+                        if(count == 70)
+                            animCheck.playing = false
+                    }
+                }
+            }
             Column{
                 id: columnPagamento
                 anchors.centerIn: parent
@@ -46,16 +84,36 @@ Item {
                 Column {
                     anchors.horizontalCenter: parent.horizontalCenter
                     spacing: 10
-                    TextField {
-                        id: fieldChange
+                    Column {
+                        id: columnChange
                         visible: false
                         anchors.horizontalCenter: parent.horizontalCenter
-                        font.family: "Roboto"
-                        font.pixelSize: 20
-                        font.bold: true
-                        horizontalAlignment: TextInput.AlignHCenter
-                        inputMask: "000"
-                        validator: IntValidator {}
+                        spacing: 10
+                        Text {
+                            text: "Valor total do seu pedido: R$ " + tValue
+                            font.bold: true
+                            font.family: "Roboto"
+                            font.pixelSize: 20
+                        }
+                        Row {
+                            spacing: 10
+                            Text {
+                                text: "Quanto você dará em dinheiro: "
+                                font.bold: true
+                                font.family: "Roboto"
+                                font.pixelSize: 20
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            TextField {
+                                id: fieldChange
+                                font.family: "Roboto"
+                                font.pixelSize: 20
+                                font.bold: true
+                                horizontalAlignment: TextInput.AlignHCenter
+                                inputMask: "000"
+                                validator: IntValidator {}
+                            }
+                        }
                     }
                     TextField {
                         id: fieldName
@@ -69,17 +127,9 @@ Item {
                     }
                 }
                 Row {
+                    id: buttonsRow
                     spacing: 30
-                    AnimatedImage {
-                        id: animCheck
-                        source: "qrc:/images/check.gif"
-                        property int count: animCheck.currentFrame
-                        onCountChanged: {
-                            if(count == 70)
-                                animCheck.playing = false
-                        }
-                    }
-                    /*
+
                     Button {
                         id: btnMoney
                         height: container.height*0.35
@@ -97,7 +147,7 @@ Item {
                         onClicked: {
                             pay = "dinheiro"
                             titleBar.title = "Para facilitar o troco, informe quanto será pago"
-                            fieldChange.visible = true
+                            columnChange.visible = true
                             fieldChange.focus = true
                             btnMoney.visible = false
                             btnCard.visible = false
@@ -110,7 +160,7 @@ Item {
                         id: nextButton
                         visible: false
                         enabled: {
-                            if(fieldChange.visible == true)
+                            if(columnChange.visible == true)
                                 return fieldChange.text == "" ? false:true
                             else
                                 return fieldName.text == "" ? false:true
@@ -129,15 +179,29 @@ Item {
                                 name = fieldName.text
                                 change = fieldChange.text
                                 creatjson.addClient(name, pay,change, tValue)
-                                creatjson.finishOrder()
+                                buttonsRow.visible = false
+                                columnPagamento.visible = false
+                                columnValidate.visible = true
+                                if(creatjson.finishOrder()) {
+                                    console.log("Funcionou!")
+                                    titleBar.title = "Pedido feito corretamente"
+                                    animCheck.playing = true
+                                    timer.start()
+                                } else {
+                                    titleBar.title = "Erro no pedido"
+                                    msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
+                                    animCheck.source = "qrc:/images/error.png"
+                                    console.log("Ñ Funcionou!")
+                                }
+
                                 name = ""
                                 pay = ""
                                 change = ""
                             }
-                            if(fieldChange.visible == true) {
+                            if(columnChange.visible == true) {
                                 titleBar.title = "Informe seu nome para ser chamado"
                                 nextButton.text = "Finalizar"
-                                fieldChange.visible = false
+                                columnChange.visible = false
                                 fieldName.visible = true
                                 fieldName.focus = true
                             }
@@ -185,13 +249,13 @@ Item {
                             nextButton.text = "Finalizar"
                             btnMoney.visible = false
                             btnCard.visible = false
-                            fieldChange.visible = false
+                            columnChange.visible = false
                             fieldName.visible = true
                             fieldName.focus = true
                             cancelButton.visible = true
                         }
                     }
-                    */
+
                 }
             }
         }
