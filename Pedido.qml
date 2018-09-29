@@ -53,10 +53,12 @@ Item {
         id: contactDelegate
         Rectangle {
             id: recDelegate
-            width: parent.width; height: listPedido.height/10
+            width: parent.width; height: listPedido.height/6.8
             //            border.color: "grey"
             //            radius: 5
-            Text { text: produto;
+            Text {
+                id: productId
+                text: produto;
                 font.family: "Roboto"
                 font.pixelSize: 21
                 anchors.left: recDelegate.left
@@ -81,6 +83,16 @@ Item {
                 id: mouseDelegate
                 anchors.fill: parent
                 hoverEnabled: true
+                onPressed: {
+                    recDelegate.color = "grey"
+                }
+                onReleased: {
+                    recDelegate.color = "white"
+                }
+                onExited: {
+                    recDelegate.color = "white"
+                }
+
                 onClicked: {
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
@@ -102,7 +114,7 @@ Item {
                             orderDialog.coxaTextButton = "Bem Passada"
                             orderDialog.peitoTextButton = "Ao Ponto"
                         }
-
+                        orderDialog.fatherProduto = produto
                         orderDialog.open()
                     }
                     else if(tipo == 2){
@@ -268,6 +280,7 @@ Item {
                 section.property: "chave"
                 section.criteria: ViewSection.FullString
                 section.delegate: sectionHeading
+
             }
 
             TitleBar {

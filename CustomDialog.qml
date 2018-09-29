@@ -10,6 +10,7 @@ Dialog {
     property alias textProtein: textProteinaPedido1.text
     property alias coxaTextButton: buttonCoxa.text
     property alias peitoTextButton: buttonPeito.text
+    property string fatherProduto: ""
     height: parent.height
     width: parent.width
     modal: true
@@ -25,6 +26,7 @@ Dialog {
     }
 
     Rectangle {
+        id: recTop
         width: parent.width
         height: parent.height * 0.83
         anchors.left: parent.Left
@@ -55,6 +57,25 @@ Dialog {
                 anchors.top: popUpPedido1.top
                 anchors.left: popUpPedido1.Left
                 anchors.right: popUpPedido1.Right
+                Text{
+                    id: textTop
+                    text: fatherProduto
+                    font.pixelSize: 30
+                    font.bold: true
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text{
+                    id: textInfo
+                    text: "Seu prato Acompanha: Arroz, Macarrão, Fritas, Feijão Tropeiro ou Caseiro, Maionese ou Purê.\n"
+                    font.family: "Roboto"
+                    font.pixelSize: 20
+                    wrapMode: Text.WordWrap
+                    //horizontalAlignment: Text.AlignJustify
+                   horizontalAlignment: Text.AlignHCenter
+                    width: flickable.width
+                }
+
                 Text {
                     id: textFeijaoPedido1
                     text: qsTr("Escolha o Feijão")
@@ -158,7 +179,7 @@ Dialog {
                 anchors.right: popUpPedido1.Right
                 Text {
                     id: textRetirarPedido1
-                    text: qsTr("Deseja modificar o Acompanhamento? O acrescimo ou retirada não muda no valor nem a quantidade total de comida")
+                    text: qsTr("Deseja retirar algum Acompanhamento?")
                     wrapMode: Text.WordWrap
                     width: flickable.width*0.9
                     font.family: "Roboto"
@@ -179,36 +200,6 @@ Dialog {
                 CheckBox{
                     id: buttonSemFritas
                     text: "Sem Fritas"
-                    font.family: "Roboto"
-                    height: 35
-                }
-                CheckBox{
-                    id: buttonMaisArroz
-                    text: "Mais Arroz"
-                    font.family: "Roboto"
-                    height: 35
-                }
-                CheckBox{
-                    id: buttonMaisMacarrao
-                    text: "Mais Macarrao"
-                    font.family: "Roboto"
-                    height: 35
-                }
-                CheckBox{
-                    id: buttonMaisFritas
-                    text: "Mais Fritas"
-                    font.family: "Roboto"
-                    height: 35
-                }
-                CheckBox{
-                    id: buttonMaisFeijao
-                    text: "Mais Feijão"
-                    font.family: "Roboto"
-                    height: 35
-                }
-                CheckBox{
-                    id: buttonMaisMaionese
-                    text: "Mais Maionese ou Purê"
                     font.family: "Roboto"
                     height: 35
                 }
@@ -282,11 +273,6 @@ Dialog {
                     creatjson.addNewProduct(listpedidofinal.produto, listpedidofinal.quantidade, listpedidofinal.valor, listpedidofinal.acompanhamento)
                     //console.log(auxIndex)
                     buttonFeijaoTropeiro.checked = true
-                    buttonMaisMaionese.checked = false
-                    buttonMaisMacarrao.checked = false
-                    buttonMaisFritas.checked = false
-                    buttonMaisFeijao.checked = false
-                    buttonMaisArroz.checked = false
                     buttonSemMacarrao.checked = false
                     buttonSemFritas.checked = false
                     buttonSemFeijao.checked = false
