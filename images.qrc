@@ -8,5 +8,6 @@
         <file>images/money.png</file>
         <file>images/check.gif</file>
         <file>images/error.png</file>
+        <file>images/gear.png</file>
     </qresource>
 </RCC>
