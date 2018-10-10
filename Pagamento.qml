@@ -110,7 +110,7 @@ Item {
                                 font.pixelSize: 20
                                 font.bold: true
                                 horizontalAlignment: TextInput.AlignHCenter
-                                inputMask: "000"
+                                inputMask: "0000"
                                 validator: IntValidator {}
                             }
                         }
@@ -157,6 +157,25 @@ Item {
                     }
 
                     Button {
+                        id: cancelButton
+                        visible: false
+                        text: "Cancelar"
+                        font.family: "Roboto"
+                        focus: true
+                        Material.background: "#ef494e"
+                        Material.foreground: "white"
+                        font.pixelSize: 25
+                        font.bold: true
+                        height: container.height*0.3
+                        width: container.width*0.35
+                        onClicked: {
+                            pay = ""
+                            name = ""
+                            change = ""
+                            stackView.pop()
+                        }
+                    }
+                    Button {
                         id: nextButton
                         visible: false
                         enabled: {
@@ -183,7 +202,6 @@ Item {
                                 columnPagamento.visible = false
                                 columnValidate.visible = true
                                 if(creatjson.finishOrder()) {
-                                    console.log("Funcionou!")
                                     titleBar.title = "Pedido feito corretamente"
                                     animCheck.playing = true
                                     timer.start()
@@ -191,7 +209,7 @@ Item {
                                     titleBar.title = "Erro no pedido"
                                     msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
                                     animCheck.source = "qrc:/images/error.png"
-                                    console.log("Ñ Funcionou!")
+
                                 }
 
                                 name = ""
@@ -208,25 +226,6 @@ Item {
                         }
                     }
 
-                    Button {
-                        id: cancelButton
-                        visible: false
-                        text: "Cancelar"
-                        font.family: "Roboto"
-                        focus: true
-                        Material.background: "#ef494e"
-                        Material.foreground: "white"
-                        font.pixelSize: 25
-                        font.bold: true
-                        height: container.height*0.3
-                        width: container.width*0.35
-                        onClicked: {
-                            pay = ""
-                            name = ""
-                            change = ""
-                            stackView.pop()
-                        }
-                    }
 
                     Button {
                         id: btnCard

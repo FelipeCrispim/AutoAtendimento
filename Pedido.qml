@@ -182,6 +182,16 @@ Item {
                     }
                     Row {
                         spacing: (popUpPedido2.width - buttonOrder2.width*2)/3
+                        Button{
+                            height: popUpPedido2.height*0.15
+                            width: popUpPedido2.width*0.4
+                            text: "Cancelar"
+                            font.pixelSize: 20
+                            font.bold: true
+                            Material.background: "#ef494e"
+                            Material.foreground: "white"
+                            onClicked: popUpPedido2.close()
+                        }
                         Button {
                             id: buttonOrder2
                             height: popUpPedido2.height*0.15
@@ -227,16 +237,6 @@ Item {
                                     spinPedido2.value
                                 }
                             }
-                        }
-                        Button{
-                            height: popUpPedido2.height*0.15
-                            width: popUpPedido2.width*0.4
-                            text: "Cancelar"
-                            font.pixelSize: 20
-                            font.bold: true
-                            Material.background: "#ef494e"
-                            Material.foreground: "white"
-                            onClicked: popUpPedido2.close()
                         }
                     }
                 }
@@ -440,22 +440,8 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                     spacing: (parent.width - finalizarButton.width*2)/3
-                    Button {
-                        id: finalizarButton
-                        height: paneResultado.height *0.13
-                        width: paneResultado.width * 0.4
-                        enabled: rootPed.valorFinal == 0? false : true
-                        text: "Finalizar"
-                        font.family: "Roboto"
-                        font.bold: true
-                        focus: true
-                        Material.background: "#5cb860"//"#4CAF50"
-                        Material.foreground: "white"
-                        font.pixelSize: 20
-                        onClicked: {
-                            stackView.push(telaPagamento,{"tValue": valorFinal})
-                        }
-                    }
+
+
                     Button {
                         id: cancelarButton
                         height: paneResultado.height *0.13
@@ -476,6 +462,22 @@ Item {
                             valorFinal = 0
                             stackView.pop()
 
+                        }
+                    }
+                    Button {
+                        id: finalizarButton
+                        height: paneResultado.height *0.13
+                        width: paneResultado.width * 0.4
+                        enabled: rootPed.valorFinal == 0? false : true
+                        text: "Finalizar"
+                        font.family: "Roboto"
+                        font.bold: true
+                        focus: true
+                        Material.background: "#5cb860"//"#4CAF50"
+                        Material.foreground: "white"
+                        font.pixelSize: 20
+                        onClicked: {
+                            stackView.push(telaPagamento,{"tValue": valorFinal})
                         }
                     }
                 }

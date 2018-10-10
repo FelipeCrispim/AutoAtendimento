@@ -84,29 +84,48 @@ Item {
         }
     }
     Rectangle{
-        id: recGear
+        id: recTopGear
+        width: parent.width
         height: parent.height*0.15
-        width: parent.width*0.1
-        anchors.right: parent.right
-        anchors.rightMargin: height/1.2
-        anchors.topMargin: width/1.5
-        anchors.top: parent.top
         color: "transparent"
-        //color: "red"
-        Image {
-            id: imageGear
-            source:"qrc:/images/gear.png"
-            anchors.centerIn: parent
-            fillMode: Image.PreserveAspectFit
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        Rectangle{
+            id: recGear
+            height: parent.height*0.6
+            width: parent.width*0.1
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.rightMargin: parent.width*0.05
+            color: "transparent"
+            visible: false
+            //color: "red"
+            Image {
+                id: imageGear
+                source:"qrc:/images/gear.png"
+                anchors.centerIn: parent
+                fillMode: Image.PreserveAspectFit
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    adminPopup.open()
+                }
+            }
         }
         MouseArea{
             anchors.fill: parent
-            onClicked: {
-                adminPopup.open()
+            onDoubleClicked: {
+                recGear.visible = !recGear.visible
+                /*   if(recTopGear.visible == false){
+                    recTopGear.visible = true
+                }
+                else{
+                    recTopGear.visible = false
+               }*/
             }
         }
     }
-
     Button {
         id: loginButton
         //            anchors.bottom: parent.bottom
@@ -127,4 +146,5 @@ Item {
             stackView.push(telaPedido)
         }
     }
+
 }

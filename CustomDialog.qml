@@ -257,6 +257,17 @@ Dialog {
             anchors.centerIn: parent
             spacing: (parent.width - buttonFinish.width*2)/3
             Button{
+                id: buttonCancel
+                height: popUpPedido1.height*0.1
+                width: popUpPedido1.width * 0.4
+                text: "Cancelar"
+                font.pixelSize: 20
+                font.bold: true
+                Material.background: "#ef494e"
+                Material.foreground: "white"
+                onClicked: popUpPedido1.close()
+            }
+            Button{
                 id: buttonFinish
                 height: popUpPedido1.height*0.1
                 width: popUpPedido1.width * 0.4
@@ -301,17 +312,6 @@ Dialog {
                     listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
                     pedidofinal1 = ""
                 }
-            }
-            Button{
-                id: buttonCancel
-                height: popUpPedido1.height*0.1
-                width: popUpPedido1.width * 0.4
-                text: "Cancelar"
-                font.pixelSize: 20
-                font.bold: true
-                Material.background: "#ef494e"
-                Material.foreground: "white"
-                onClicked: popUpPedido1.close()
             }
         }
     }
