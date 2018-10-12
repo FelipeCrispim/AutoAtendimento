@@ -126,7 +126,7 @@ Item {
             }
         }
     }
-    Button {
+    RoundButton {
         id: loginButton
         //            anchors.bottom: parent.bottom
         //            anchors.bottomMargin: 20

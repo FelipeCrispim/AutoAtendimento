@@ -130,7 +130,7 @@ Item {
                     id: buttonsRow
                     spacing: 30
 
-                    Button {
+                    RoundButton {
                         id: btnMoney
                         height: container.height*0.35
                         width: container.width*0.45
@@ -156,7 +156,7 @@ Item {
                         }
                     }
 
-                    Button {
+                    RoundButton {
                         id: cancelButton
                         visible: false
                         text: "Cancelar"
@@ -175,7 +175,7 @@ Item {
                             stackView.pop()
                         }
                     }
-                    Button {
+                    RoundButton {
                         id: nextButton
                         visible: false
                         enabled: {
@@ -227,7 +227,7 @@ Item {
                     }
 
 
-                    Button {
+                    RoundButton {
                         id: btnCard
                         height: container.height*0.35
                         width: container.width*0.45

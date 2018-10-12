@@ -94,6 +94,8 @@ Item {
                 }
 
                 onClicked: {
+                    var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
+                    listResultado.mouseY = positionInWindow.y-150
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
                         auxvalor1 = valor
@@ -250,15 +252,15 @@ Item {
         width: parent.width
         color: "#88FF9800"//Material.accent
 
-        DropShadow {
-            anchors.fill: panePedido
-            horizontalOffset: 6
-            verticalOffset: 6
-            radius: 8.0
-            samples: 17
-            color: "#55000000"
-            source: panePedido
-        }
+//        DropShadow {
+//            anchors.fill: panePedido
+//            horizontalOffset: 6
+//            verticalOffset: 6
+//            radius: 8.0
+//            samples: 17
+//            color: "#55000000"
+//            source: panePedido
+//        }
         Rectangle {
             id: panePedido
             height: parent.height*0.93
@@ -313,15 +315,15 @@ Item {
             }
         }
 
-        DropShadow {
-            anchors.fill: paneResultado
-            horizontalOffset: 6
-            verticalOffset: 6
-            radius: 8.0
-            samples: 17
-            color: "#55000000"
-            source: paneResultado
-        }
+//        DropShadow {
+//            anchors.fill: paneResultado
+//            horizontalOffset: 6
+//            verticalOffset: 6
+//            radius: 8.0
+//            samples: 17
+//            color: "#55000000"
+//            source: paneResultado
+//        }
         Rectangle {
             id: paneResultado
             height: parent.height*0.93
@@ -329,7 +331,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 10
             anchors.verticalCenter: parent.verticalCenter
-            clip: true
+//            clip: true
             Material.elevation: 13
             TitleBar {
                 title: "Seu pedido final"
@@ -352,6 +354,26 @@ Item {
                     //                    anchors.margins: 10
                     model: ListModel{}
                     //                    spacing: 2
+                    property int mouseY: 0
+                    add: Transition {
+                        id: addTrans
+                        //                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 4000 }
+                        NumberAnimation { property: "scale"; from: 0.1; to: 1.0; duration: 800 }
+                        PathAnimation {
+                            duration: 500
+                            path: Path {
+                                startX: -root.width*0.6//addTrans.ViewTransition.destination.x + 200
+                                startY: listResultado.mouseY//addTrans.ViewTransition.destination.y + 200
+                                //                        PathCurve { relativeX: -100; relativeY: -50 }
+                                //                        PathCurve { relativeX: 50; relativeY: -150 }
+                                PathCurve {
+                                    x: addTrans.ViewTransition.destination.x
+                                    y: addTrans.ViewTransition.destination.y
+
+                                }
+                            }
+                        }
+                    }
                     delegate: Rectangle{
                         //  property int indexx: 0
                         id: recListResultado
@@ -442,7 +464,7 @@ Item {
                     spacing: (parent.width - finalizarButton.width*2)/3
 
 
-                    Button {
+                    RoundButton {
                         id: cancelarButton
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
@@ -464,7 +486,7 @@ Item {
 
                         }
                     }
-                    Button {
+                    RoundButton {
                         id: finalizarButton
                         height: paneResultado.height *0.13
                         width: paneResultado.width * 0.4
