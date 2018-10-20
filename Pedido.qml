@@ -86,10 +86,13 @@ Item {
                 onPressed: {
                     recDelegate.color = "grey"
                 }
-                onReleased: {
+                 onReleased: {
                     recDelegate.color = "white"
                 }
                 onExited: {
+                    recDelegate.color = "white"
+                }
+                onCanceled: {
                     recDelegate.color = "white"
                 }
 
@@ -145,7 +148,7 @@ Item {
         Rectangle{
             id: recPopUp2
             height: parent.height*0.6
-            width: parent.width*0.6
+            width: parent.width*0.8
             anchors.centerIn: parent
 
             Popup{
@@ -171,7 +174,7 @@ Item {
                         text: "Escolha a quantidade"
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: "Roboto"
-                        font.pixelSize: 20
+                        font.pixelSize: 22
                     }
 
                     SpinBox{
@@ -181,11 +184,12 @@ Item {
                         font.pointSize: 20
                         width: popUpPedido2.width*0.4
                         value: 1
+                        from: 1
                     }
                     Row {
                         spacing: (popUpPedido2.width - buttonOrder2.width*2)/3
-                        Button{
-                            height: popUpPedido2.height*0.15
+                        RoundButton{
+                            height: popUpPedido2.height*0.2
                             width: popUpPedido2.width*0.4
                             text: "Cancelar"
                             font.pixelSize: 20
@@ -194,9 +198,9 @@ Item {
                             Material.foreground: "white"
                             onClicked: popUpPedido2.close()
                         }
-                        Button {
+                        RoundButton {
                             id: buttonOrder2
-                            height: popUpPedido2.height*0.15
+                            height: popUpPedido2.height*0.2
                             width: popUpPedido2.width*0.4
                             text: "Finalizar"
                             font.family: "Roboto"
@@ -231,7 +235,7 @@ Item {
                                     }
 
                                     listResultado.model.append({textResultado: pedidofinal2, valorResultado: auxvalor2})
-                                    spinPedido2.value = 0
+                                    spinPedido2.value = 1
                                     valorFinal = valorFinal + aux1
                                     popUpPedido2.close()
                                     listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
@@ -378,12 +382,13 @@ Item {
                         //  property int indexx: 0
                         id: recListResultado
                         width: listResultado.width; height: listResultado.height/4
+                       // color: "grey"
                         clip: true
                         Text {
                             id: textListResultado
                             text: textResultado
                             wrapMode: Text.WordWrap
-                            width: recListResultado.width*0.7
+                            width: recListResultado.width*0.65
                             font.family: "Roboto"
                             font.pixelSize: 20
                             anchors.left: recListResultado.left
@@ -394,7 +399,7 @@ Item {
                             id: textValorListResultado
                             text: '<b>R$: ' + valorResultado + '</b>';
                             anchors.right: trashIcon.left
-                            anchors.rightMargin: 20
+                            anchors.rightMargin: 5
                             font.family: "Roboto"
                             font.pixelSize: 20
                             anchors.verticalCenter: parent.verticalCenter
@@ -405,7 +410,7 @@ Item {
                             anchors.right: recListResultado.right
                             anchors.rightMargin: recListResultado.width*0.01
                             anchors.verticalCenter: parent.verticalCenter
-                            width: 30
+                            width: 40
                             height: 35
                             MouseArea {
                                 anchors.fill: parent

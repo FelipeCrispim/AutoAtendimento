@@ -29,7 +29,7 @@ Dialog {
     Rectangle {
         id: recTop
         width: parent.width
-        height: parent.height * 0.83
+        height: parent.height * 0.73
         anchors.left: parent.Left
 //        anchors.leftMargin: 20
         Flickable {
@@ -256,7 +256,7 @@ Dialog {
         Row {
             anchors.centerIn: parent
             spacing: (parent.width - buttonFinish.width*2)/3
-            Button{
+            RoundButton{
                 id: buttonCancel
                 height: popUpPedido1.height*0.1
                 width: popUpPedido1.width * 0.4
@@ -267,7 +267,7 @@ Dialog {
                 Material.foreground: "white"
                 onClicked: popUpPedido1.close()
             }
-            Button{
+            RoundButton{
                 id: buttonFinish
                 height: popUpPedido1.height*0.1
                 width: popUpPedido1.width * 0.4

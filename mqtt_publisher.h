@@ -21,4 +21,4 @@ public:
 
 };
 
-#endif // MQTT_PUBLISHER_H
+#endif //MQTT_PUBLISHER_H

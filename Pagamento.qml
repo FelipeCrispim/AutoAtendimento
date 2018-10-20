@@ -35,8 +35,11 @@ Item {
         Rectangle {
             id: container
             anchors.centerIn: parent
-            width: parent.width*0.5
-            height: parent.height*0.7
+            //anchors.left: parent.left
+            //anchors.leftMargin: parent.width*0.05
+            //anchors.verticalCenter: parent.verticalCenter
+            width: parent.width*0.8
+            height: parent.height*0.9
             clip: true
             Material.elevation: 13
             TitleBar {
@@ -110,7 +113,8 @@ Item {
                                 font.pixelSize: 20
                                 font.bold: true
                                 horizontalAlignment: TextInput.AlignHCenter
-                                inputMask: "0000"
+                                maximumLength: 5
+                                //inputMask: "0000"
                                 validator: IntValidator {}
                             }
                         }
@@ -120,7 +124,8 @@ Item {
                         visible: false
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: "Roboto"
-                        font.pixelSize: 20
+                        font.pixelSize: 25
+                        width: container.width*0.35
                         font.bold: true
                         horizontalAlignment: TextInput.AlignHCenter
                         validator: RegExpValidator {regExp: /[a-zA-Z]+/}
@@ -151,81 +156,22 @@ Item {
                             fieldChange.focus = true
                             btnMoney.visible = false
                             btnCard.visible = false
-                            nextButton.visible = true
-                            cancelButton.visible = true
+                          //  nextButton.visible = true
+                            recKey.visible = true
                         }
                     }
+                    // COLOCAR AQUI !!!
 
-                    RoundButton {
-                        id: cancelButton
+                    Rectangle{
+                        id: recKey
                         visible: false
-                        text: "Cancelar"
-                        font.family: "Roboto"
-                        focus: true
-                        Material.background: "#ef494e"
-                        Material.foreground: "white"
-                        font.pixelSize: 25
-                        font.bold: true
-                        height: container.height*0.3
-                        width: container.width*0.35
-                        onClicked: {
-                            pay = ""
-                            name = ""
-                            change = ""
-                            stackView.pop()
+                        height: container.height*0.5
+                        border.color: "black"
+                        width: container.width
+                        KeyBoard{
+                            id: keyBoard
                         }
                     }
-                    RoundButton {
-                        id: nextButton
-                        visible: false
-                        enabled: {
-                            if(columnChange.visible == true)
-                                return fieldChange.text == "" ? false:true
-                            else
-                                return fieldName.text == "" ? false:true
-                        }
-                        text: "Prosseguir"
-                        font.family: "Roboto"
-                        focus: true
-                        Material.background: "#5cb860"
-                        Material.foreground: "white"
-                        font.pixelSize: 25
-                        font.bold: true
-                        height: container.height*0.3
-                        width: container.width*0.35
-                        onClicked: {
-                            if(nextButton.text == "Finalizar"){
-                                name = fieldName.text
-                                change = fieldChange.text
-                                creatjson.addClient(name, pay,change, tValue)
-                                buttonsRow.visible = false
-                                columnPagamento.visible = false
-                                columnValidate.visible = true
-                                if(creatjson.finishOrder()) {
-                                    titleBar.title = "Pedido feito corretamente"
-                                    animCheck.playing = true
-                                    timer.start()
-                                } else {
-                                    titleBar.title = "Erro no pedido"
-                                    msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
-                                    animCheck.source = "qrc:/images/error.png"
-
-                                }
-
-                                name = ""
-                                pay = ""
-                                change = ""
-                            }
-                            if(columnChange.visible == true) {
-                                titleBar.title = "Informe seu nome para ser chamado"
-                                nextButton.text = "Finalizar"
-                                columnChange.visible = false
-                                fieldName.visible = true
-                                fieldName.focus = true
-                            }
-                        }
-                    }
-
 
                     RoundButton {
                         id: btnCard
@@ -244,19 +190,112 @@ Item {
                         onClicked: {
                             pay = "cartao"
                             titleBar.title = "Informe seu nome para ser chamado"
-                            nextButton.visible = true
-                            nextButton.text = "Finalizar"
+                            recKey.visible = true
+                            //nextButton.text = "Finalizar"
                             btnMoney.visible = false
                             btnCard.visible = false
                             columnChange.visible = false
                             fieldName.visible = true
                             fieldName.focus = true
-                            cancelButton.visible = true
                         }
                     }
 
                 }
             }
         }
+        /*Rectangle{
+            height: parent.height*0.8
+            width: parent.width*0.3
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: parent.width*0.01
+            KeyBoard{
+                id: keyBoard
+                anchors.top: titleBarKey.bottom
+                width: parent.width
+                height: parent.height - titleBarKey.height
+            }
+            TitleBar {
+                id: titleBarKey
+                title: "Digite o Valor"
+                height: 70
+                width: parent.width
+                anchors.top: parent.top
+            }
+        }*/
     }
 }
+
+
+
+
+/*RoundButton {
+    id: cancelButton
+    visible: false
+    text: "Cancelar"
+    font.family: "Roboto"
+    focus: true
+    Material.background: "#ef494e"
+    Material.foreground: "white"
+    font.pixelSize: 25
+    font.bold: true
+    height: container.height*0.2
+    width: container.width*0.35
+    onClicked: {
+        pay = ""
+        name = ""
+        change = ""
+        stackView.pop()
+    }
+}
+
+RoundButton {
+    id: nextButton
+    visible: false
+    enabled: {
+        if(columnChange.visible == true)
+            return fieldChange.text == "" ? false:true
+        else
+            return fieldName.text == "" ? false:true
+    }
+    text: "Prosseguir"
+    font.family: "Roboto"
+    focus: true
+    Material.background: "#5cb860"
+    Material.foreground: "white"
+    font.pixelSize: 25
+    font.bold: true
+    height: container.height*0.2
+    width: container.width*0.35
+    onClicked: {
+        if(nextButton.text == "Finalizar"){
+            name = fieldName.text
+            change = fieldChange.text
+            creatjson.addClient(name, pay,change, tValue)
+            buttonsRow.visible = false
+            columnPagamento.visible = false
+            columnValidate.visible = true
+            if(creatjson.finishOrder()) {
+                titleBar.title = "Pedido feito corretamente"
+                animCheck.playing = true
+                timer.start()
+            } else {
+                titleBar.title = "Erro no pedido"
+                msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
+                animCheck.source = "qrc:/images/error.png"
+
+            }
+
+            name = ""
+            pay = ""
+            change = ""
+        }
+        if(columnChange.visible == true) {
+            titleBar.title = "Informe seu nome para ser chamado"
+            nextButton.text = "Finalizar"
+            columnChange.visible = false
+            fieldName.visible = true
+            fieldName.focus = true
+        }
+    }
+}*/

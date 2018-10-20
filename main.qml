@@ -9,7 +9,7 @@ ApplicationWindow {
     height: 1200
     title: qsTr("Auto Atendimento")
     visibility: Qt.platform.os == "android"? Window.FullScreen : Window.Maximized
-
+    flags: Qt.FramelessWindowHint
     StackView {
         id: stackView
         anchors.fill: parent

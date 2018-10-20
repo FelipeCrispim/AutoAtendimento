@@ -7,5 +7,6 @@
         <file>Pagamento.qml</file>
         <file>TitleBar.qml</file>
         <file>CustomDialog.qml</file>
+        <file>KeyBoard.qml</file>
     </qresource>
 </RCC>
