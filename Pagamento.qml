@@ -191,7 +191,7 @@ Item {
                             pay = "cartao"
                             titleBar.title = "Informe seu nome para ser chamado"
                             recKey.visible = true
-                            //nextButton.text = "Finalizar"
+                            keyBoard.nextButton.text = "Finalizar"
                             btnMoney.visible = false
                             btnCard.visible = false
                             columnChange.visible = false

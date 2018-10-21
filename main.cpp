@@ -5,6 +5,7 @@
 #include "mqtt_publisher.h"
 #include "creatjson.h"
 #include <qdebug.h>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls.Material 2.1
 import QtGraphicalEffects 1.0
 Item {
+    property alias nextButton: nextButton
     width: parent.width
     height: parent.height
     Rectangle{
@@ -19,253 +20,32 @@ Item {
          //   border.color: "black"
             Row{
                 spacing: 1
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.0955
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("1")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "1"
+                Repeater {
+                    model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+                    Rectangle{
+                        height: lineTwo.height; width: lineTwo.width*0.0955
+                        border.color: "orange"
+                        border.width: 2
+                        radius: 5
+                        Text {
+                            anchors.centerIn: parent
+                            font.bold: true
+                            font.pixelSize: parent.height*0.3
+                            text: modelData
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                if(fieldChange.visible){
+                                    fieldChange.text = fieldChange.text + modelData
+                                }
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("2")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "2"
+                            onPressed: {
+                                parent.color = "grey"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("3")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "3"
+                            onReleased: {
+                                parent.color = "white"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("4")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "4"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("5")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "5"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("6")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "6"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("7")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "7"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("8")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "8"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("9")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "9"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("0")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "0"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
                         }
                     }
                 }
@@ -281,278 +61,32 @@ Item {
           //  border.color: "black"
             Row{
                 spacing: 1
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.0955
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("Q")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "Q"
+                Repeater {
+                    model: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "."]
+                    Rectangle{
+                        height: lineOne.height; width: lineOne.width*0.0955
+                        border.color: "orange"
+                        border.width: 2
+                        radius: 5
+                        Text {
+                            anchors.centerIn: parent
+                            font.bold: true
+                            font.pixelSize: parent.height*0.3
+                            text: modelData
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                if(fieldName.visible){
+                                    fieldName.text = fieldName.text + modelData
+                                }
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("W")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "W"
+                            onPressed: {
+                                parent.color = "grey"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("E")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "E"
+                            onReleased: {
+                                parent.color = "white"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("R")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "R"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("T")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "T"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("Y")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "Y"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("U")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "U"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("I")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "I"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("O")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "O"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("P")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "P"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineOne.height; width: lineOne.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr(".")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldChange.visible){
-                                fieldChange.text = fieldChange.text + "."
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
                         }
                     }
                 }
@@ -571,234 +105,39 @@ Item {
             //border.color: "black"
             Row{
                 spacing: 1
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.0955
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("A")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "A"
+                Repeater {
+                    model: ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
+                    Rectangle{
+                        height: lineOne.height; width: lineOne.width*0.0955
+                        border.color: "orange"
+                        border.width: 2
+                        radius: 5
+                        Text {
+                            anchors.centerIn: parent
+                            font.bold: true
+                            font.pixelSize: parent.height*0.3
+                            text: modelData
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                if(fieldName.visible){
+                                    fieldName.text = fieldName.text + modelData
+                                }
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("S")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "S"
+                            onPressed: {
+                                parent.color = "grey"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("D")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "D"
+                            onReleased: {
+                                parent.color = "white"
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("F")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "F"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("G")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "G"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("H")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "H"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("J")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "J"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("K")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "K"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("L")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "L"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
                         }
                     }
                 }
                 Rectangle{
                     height: lineTwo.height; width: lineTwo.width*0.15
                     border.color: "orange"
+                    border.width: 2
                     radius: 5
                     Image {
                         anchors.centerIn: parent
@@ -861,181 +200,36 @@ Item {
                         stackView.pop()
                     }
                 }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.0955
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("Z")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "Z"
+                Repeater {
+                    model: ["Z", "X", "C", "V", "B", "N", "M"]
+                    Rectangle{
+                        height: lineOne.height; width: lineOne.width*0.0955
+                        border.color: "orange"
+                        border.width: 2
+                        radius: 5
+                        Text {
+                            anchors.centerIn: parent
+                            font.bold: true
+                            font.pixelSize: parent.height*0.3
+                            text: modelData
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: {
+                                if(fieldName.visible){
+                                    fieldName.text = fieldName.text + modelData
+                                }
                             }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
+                            onPressed: {
+                                parent.color = "grey"
+                            }
+                            onReleased: {
+                                parent.color = "white"
+                            }
                         }
                     }
                 }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("X")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "X"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("C")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "C"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("V")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "V"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("B")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "B"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("N")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "N"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
-                Rectangle{
-                    height: lineTwo.height; width: lineTwo.width*0.095
-                    border.color: "orange"
-                    radius: 5
-                    Text {
-                        anchors.centerIn: parent
-                        font.bold: true
-                        font.pixelSize: parent.height*0.3
-                        text: qsTr("M")
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onClicked: {
-                            if(fieldName.visible){
-                                fieldName.text = fieldName.text + "M"
-                            }
-                        }
-                        onPressed: {
-                            parent.color = "grey"
-                        }
-                        onReleased: {
-                            parent.color = "white"
-                        }
-                    }
-                }
+
                 /*RoundButton{
                     height: lineThree.height; width: lineThree.width*0.22
                     text: "Finalizar"

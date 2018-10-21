@@ -86,7 +86,7 @@ Item {
                 onPressed: {
                     recDelegate.color = "grey"
                 }
-                 onReleased: {
+                onReleased: {
                     recDelegate.color = "white"
                 }
                 onExited: {
@@ -97,8 +97,8 @@ Item {
                 }
 
                 onClicked: {
-                    var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
-                    listResultado.mouseY = positionInWindow.y-150
+                    //var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
+                    listResultado.mouseY = recDelegate.y-20//positionInWindow.y-150
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
                         auxvalor1 = valor
@@ -256,15 +256,15 @@ Item {
         width: parent.width
         color: "#88FF9800"//Material.accent
 
-//        DropShadow {
-//            anchors.fill: panePedido
-//            horizontalOffset: 6
-//            verticalOffset: 6
-//            radius: 8.0
-//            samples: 17
-//            color: "#55000000"
-//            source: panePedido
-//        }
+        //        DropShadow {
+        //            anchors.fill: panePedido
+        //            horizontalOffset: 6
+        //            verticalOffset: 6
+        //            radius: 8.0
+        //            samples: 17
+        //            color: "#55000000"
+        //            source: panePedido
+        //        }
         Rectangle {
             id: panePedido
             height: parent.height*0.93
@@ -319,15 +319,15 @@ Item {
             }
         }
 
-//        DropShadow {
-//            anchors.fill: paneResultado
-//            horizontalOffset: 6
-//            verticalOffset: 6
-//            radius: 8.0
-//            samples: 17
-//            color: "#55000000"
-//            source: paneResultado
-//        }
+        //        DropShadow {
+        //            anchors.fill: paneResultado
+        //            horizontalOffset: 6
+        //            verticalOffset: 6
+        //            radius: 8.0
+        //            samples: 17
+        //            color: "#55000000"
+        //            source: paneResultado
+        //        }
         Rectangle {
             id: paneResultado
             height: parent.height*0.93
@@ -335,7 +335,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 10
             anchors.verticalCenter: parent.verticalCenter
-//            clip: true
+            //            clip: true
             Material.elevation: 13
             TitleBar {
                 title: "Seu pedido final"
@@ -349,8 +349,7 @@ Item {
                 height: parent.height * 0.7
                 width: parent.width
                 //border.color: "black"
-                clip: true
-
+                clip: addTrans.running? false: true
                 ListView{
                     id: listResultado
                     anchors.fill: parent
@@ -361,8 +360,9 @@ Item {
                     property int mouseY: 0
                     add: Transition {
                         id: addTrans
+
                         //                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 4000 }
-                        NumberAnimation { property: "scale"; from: 0.1; to: 1.0; duration: 800 }
+                        NumberAnimation {property: "scale"; from: 0.1; to: 1.0; duration: 800}
                         PathAnimation {
                             duration: 500
                             path: Path {
@@ -373,7 +373,6 @@ Item {
                                 PathCurve {
                                     x: addTrans.ViewTransition.destination.x
                                     y: addTrans.ViewTransition.destination.y
-
                                 }
                             }
                         }
@@ -382,8 +381,9 @@ Item {
                         //  property int indexx: 0
                         id: recListResultado
                         width: listResultado.width; height: listResultado.height/4
-                       // color: "grey"
+                        // color: "grey"
                         clip: true
+
                         Text {
                             id: textListResultado
                             text: textResultado
@@ -444,7 +444,7 @@ Item {
             Rectangle{
                 id: recPaneFinalizarResultado
                 height: paneResultado.height*0.3
-                width: paneResultado.width*0.962
+                width: parent.width
                 anchors.top: recPaneResultado.bottom
                 anchors.topMargin: -10
                 anchors.horizontalCenter: parent.horizontalCenter
