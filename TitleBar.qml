@@ -5,36 +5,36 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id: root
-    color: 'transparent'
+    color: '#774840'
     property alias title: words.text
 
-    Image {
-        id: background
-        width: parent.width; height: parent.height
-        Rectangle {
-            anchors.fill: parent
-            color: "#774840"
-        }
-        visible: false
-    }
-    Item {
-        id: transframe
-        width: parent.width; height: parent.height
-        visible: false
-        Triangle {
-            antialiasing: true
-            anchors.bottom: parent.bottom;
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 15
-            height: 7
-        }
-    }
-    OpacityMask {
-        anchors.fill: background
-        source: background
-        maskSource: transframe
-        invert: true
-    }
+//    Image {
+//        id: background
+//        width: parent.width; height: parent.height
+//        Rectangle {
+//            anchors.fill: parent
+//            color: "#774840"
+//        }
+//        visible: false
+//    }
+//    Item {
+//        id: transframe
+//        width: parent.width; height: parent.height
+//        visible: false
+//        Triangle {
+//            antialiasing: true
+//            anchors.bottom: parent.bottom;
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: 15
+//            height: 7
+//        }
+//    }
+//    OpacityMask {
+//        anchors.fill: background
+//        source: background
+//        maskSource: transframe
+//        invert: true
+//    }
 
     Text {
         id: words

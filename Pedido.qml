@@ -290,20 +290,23 @@ Item {
             }
 
             TitleBar {
+                id: titleBar
                 title: "Clique nas opções abaixo do que deseja"
                 height: 70
                 width: parent.width
                 anchors.top: panePedido.top
             }
             Image {
-                id: arrow
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
+                anchors.top: titleBar.bottom
+                anchors.topMargin: 5
+                height: 35
+                width: 35
                 source: "qrc:/images/arrow.png"
-                rotation: 180
-                opacity: listPedido.atYEnd ? 0 : 0.5
+                rotation: -90
+                opacity: listPedido.atYEnd ? 0.8 : 0
                 Behavior on opacity { NumberAnimation { duration: 500 } }
-                NumberAnimation { id: anim; target: listPedido; property: "contentY"; easing.type: Easing.OutCubic; duration: 1500 }
+                NumberAnimation { id: botArrowAnim; target: listPedido; property: "contentY"; easing.type: Easing.OutCubic; duration: 1500 }
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -311,23 +314,39 @@ Item {
                         var destPos;
                         listPedido.positionViewAtIndex(listPedido.count - 1, ListView.Beginning);
                         destPos = listPedido.contentY;
-                        anim.from = pos;
-                        anim.to = destPos;
-                        anim.running = true;
+                        botArrowAnim.from = destPos;
+                        botArrowAnim.to = 0;
+                        botArrowAnim.start()
+                    }
+                }
+            }
+            Image {
+                id: topArrow
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 5
+                height: 35
+                width: 35
+                source: "qrc:/images/arrow.png"
+                rotation: 90//180
+                opacity: listPedido.atYEnd ? 0 : 0.8
+                Behavior on opacity { NumberAnimation { duration: 500 } }
+                NumberAnimation { id: topArrowAnim; target: listPedido; property: "contentY"; easing.type: Easing.OutCubic; duration: 1500 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        var pos = listPedido.contentY;
+                        var destPos;
+                        listPedido.positionViewAtIndex(listPedido.count - 1, ListView.Beginning);
+                        destPos = listPedido.contentY;
+                        topArrowAnim.from = pos;
+                        topArrowAnim.to = destPos;
+                        topArrowAnim.start()
                     }
                 }
             }
         }
 
-        //        DropShadow {
-        //            anchors.fill: paneResultado
-        //            horizontalOffset: 6
-        //            verticalOffset: 6
-        //            radius: 8.0
-        //            samples: 17
-        //            color: "#55000000"
-        //            source: paneResultado
-        //        }
         Rectangle {
             id: paneResultado
             height: parent.height*0.93
@@ -375,6 +394,16 @@ Item {
                                     y: addTrans.ViewTransition.destination.y
                                 }
                             }
+                        }
+                    }
+                    displaced: Transition {
+                        id: dispTrans
+                        SequentialAnimation {
+                            PauseAnimation {
+                                duration: (dispTrans.ViewTransition.index -
+                                           dispTrans.ViewTransition.targetIndexes[0]) * 100
+                            }
+                            NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
                         }
                     }
                     delegate: Rectangle{

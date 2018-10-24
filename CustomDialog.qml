@@ -228,9 +228,12 @@ Dialog {
             id: arrow
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: divider.top
+            anchors.bottomMargin: 5
+            height: 35
+            width: 35
             source: "qrc:/images/arrow.png"
-            rotation: 180
-            opacity: flickable.atYEnd ? 0 : 0.5
+            rotation: 90
+            opacity: flickable.atYEnd ? 0 : 0.8
             Behavior on opacity { NumberAnimation { duration: 500 } }
             NumberAnimation { id: anim; target: flickable; property: "contentY"; easing.type: Easing.OutCubic; duration: 500 }
             MouseArea {
@@ -291,7 +294,8 @@ Dialog {
                         }
                     }
 
-                    listResultado.model.append({textResultado: pedidofinal1, valorResultado: auxvalor1})
+//                    listResultado.model.append({textResultado: pedidofinal1, valorResultado: auxvalor1})
+                    listResultado.model.insert(0, {textResultado: pedidofinal1, valorResultado: auxvalor1})
                     //console.log(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
                     creatjson.addNewProduct(listpedidofinal.produto, listpedidofinal.quantidade, listpedidofinal.valor, listpedidofinal.acompanhamento)
                     //console.log(auxIndex)
