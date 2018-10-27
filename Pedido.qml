@@ -97,8 +97,9 @@ Item {
                 }
 
                 onClicked: {
-                    //var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
-                    listResultado.mouseY = recDelegate.y-20//positionInWindow.y-150
+                    var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
+                    listResultado.mouseY = positionInWindow.y-150//recDelegate.y-20
+                    console.log("Teste: ", listResultado.mouseY)
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
                         auxvalor1 = valor
@@ -234,7 +235,7 @@ Item {
                                         auxvalor2 = auxvalor2 + ".00"
                                     }
 
-                                    listResultado.model.append({textResultado: pedidofinal2, valorResultado: auxvalor2})
+                                    listResultado.model.insert(0, {textResultado: pedidofinal2, valorResultado: auxvalor2})
                                     spinPedido2.value = 1
                                     valorFinal = valorFinal + aux1
                                     popUpPedido2.close()
@@ -385,7 +386,7 @@ Item {
                         PathAnimation {
                             duration: 500
                             path: Path {
-                                startX: -root.width*0.6//addTrans.ViewTransition.destination.x + 200
+                                startX: -root.width*0.55//addTrans.ViewTransition.destination.x + 200
                                 startY: listResultado.mouseY//addTrans.ViewTransition.destination.y + 200
                                 //                        PathCurve { relativeX: -100; relativeY: -50 }
                                 //                        PathCurve { relativeX: 50; relativeY: -150 }
@@ -421,7 +422,7 @@ Item {
                             font.family: "Roboto"
                             font.pixelSize: 20
                             anchors.left: recListResultado.left
-                            anchors.leftMargin: 20
+                            anchors.leftMargin: 10
                             anchors.verticalCenter: parent.verticalCenter
                         }
                         Text {
