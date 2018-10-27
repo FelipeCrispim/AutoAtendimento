@@ -61,8 +61,7 @@ DISTFILES += \
     android/res/values/libs.xml \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat \
-    ElevationEffect.qml
+    android/gradlew.bat
 
 HEADERS += \
     triangle.h \

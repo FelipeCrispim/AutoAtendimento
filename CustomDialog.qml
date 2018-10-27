@@ -226,7 +226,9 @@ Dialog {
         anchors.horizontalCenter: parent.horizontalCenter
         Image {
             id: arrow
-            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 10
             anchors.bottom: divider.top
             anchors.bottomMargin: 5
             height: 35
