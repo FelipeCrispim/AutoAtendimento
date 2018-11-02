@@ -8,7 +8,5 @@
         <file>TitleBar.qml</file>
         <file>CustomDialog.qml</file>
         <file>KeyBoard.qml</file>
-        <file>ElevationEffect.qml</file>
-        <file>BoxShadow.qml</file>
     </qresource>
 </RCC>

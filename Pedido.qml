@@ -255,7 +255,8 @@ Item {
         id: recPedido
         height: parent.height
         width: parent.width
-        color: "#88FF9800"//Material.accent
+        color: "#88FF9800"
+        //Material.accent
 
         //        DropShadow {
         //            anchors.fill: panePedido
@@ -292,7 +293,7 @@ Item {
 
             TitleBar {
                 id: titleBar
-                title: "Clique nas opções abaixo do que deseja"
+                title: "Clique no que deseja"
                 height: 70
                 width: parent.width
                 anchors.top: panePedido.top
@@ -351,6 +352,7 @@ Item {
         Rectangle {
             id: paneResultado
             height: parent.height*0.93
+          //  color: "#DCDCDC"
             width: parent.width*0.46
             anchors.right: parent.right
             anchors.rightMargin: 10
@@ -478,7 +480,16 @@ Item {
                 anchors.top: recPaneResultado.bottom
                 anchors.topMargin: -10
                 anchors.horizontalCenter: parent.horizontalCenter
-                //border.color: "black"
+               // color: "#DCDCDC"
+                border.pixelAligned: true
+
+                Rectangle{
+                    color: "#88FF9800"
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    width: parent.width
+                    height: parent.height*0.1
+                }
 
                 Text {
                     id: textValorFinalResultado
@@ -486,7 +497,7 @@ Item {
                     //anchors.leftMargin: parent.height*0.1
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    anchors.topMargin: parent.height*0.2
+                    anchors.topMargin: parent.height*0.25
                     font.family: "Roboto"
                     font.pixelSize: 20
                     text: "<b> Valor Total R$: " + valorFinal + "</b>"
