@@ -268,13 +268,21 @@ Item {
         //            source: panePedido
         //        }
         Rectangle {
-            id: panePedido
             height: parent.height*0.93
             width: parent.width*0.46
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 30
+            anchors.top: panePedido.top
+            anchors.topMargin: 10
+            color: "#33000000"
+        }
+        Rectangle {
+            id: panePedido
+            height:parent.height*0.93
+            width: parent.width*0.46
+            anchors.left: parent.left
+            anchors.leftMargin: 20
             anchors.verticalCenter: parent.verticalCenter
-            Material.elevation: 13
             clip: true
 
             ListView{
@@ -350,12 +358,20 @@ Item {
         }
 
         Rectangle {
-            id: paneResultado
             height: parent.height*0.93
-          //  color: "#DCDCDC"
             width: parent.width*0.46
             anchors.right: parent.right
             anchors.rightMargin: 10
+            anchors.top: paneResultado.top
+            anchors.topMargin: 10
+            color: "#33000000"
+        }
+        Rectangle {
+            id: paneResultado
+            height: parent.height*0.93
+            width: parent.width*0.46
+            anchors.right: parent.right
+            anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
             //            clip: true
             Material.elevation: 13
@@ -480,7 +496,7 @@ Item {
                 anchors.top: recPaneResultado.bottom
                 anchors.topMargin: -10
                 anchors.horizontalCenter: parent.horizontalCenter
-               // color: "#DCDCDC"
+                // color: "#DCDCDC"
                 border.pixelAligned: true
 
                 Rectangle{

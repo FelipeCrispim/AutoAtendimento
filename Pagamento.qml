@@ -23,14 +23,14 @@ Item {
         height: parent.height
         width: parent.width
         color: "#88FF9800"
-        DropShadow {
-            anchors.fill: container
-            horizontalOffset: 6
-            verticalOffset: 6
-            radius: 8.0
-            samples: 17
-            color: "#55000000"
-            source: container
+        Rectangle {
+            height: parent.height*0.9
+            width: parent.width*0.8
+            anchors.left: container.left
+            anchors.leftMargin: 10
+            anchors.top: container.top
+            anchors.topMargin: 10
+            color: "#33000000"
         }
         Rectangle {
             id: container
@@ -64,7 +64,7 @@ Item {
                     text: "Aguarde na mesa. Seu nome será chamado."
                     font.bold: true
                     font.family: "Roboto"
-                    font.pixelSize: 20
+                    font.pixelSize: 25
                 }
                 AnimatedImage {
                     id: animCheck
@@ -134,34 +134,79 @@ Item {
                 Row {
                     id: buttonsRow
                     spacing: 30
-
                     RoundButton {
-                        id: btnMoney
+                        id: cancelarButton
                         height: container.height*0.35
                         width: container.width*0.45
-                        text: "Dinheiro"
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: "Cancelar"
                         font.family: "Roboto"
+                        font.bold: true
                         focus: true
-                        Material.background: "#5cb860"
+                        Material.background: "#ef494e"//"#ED3237"
                         Material.foreground: "white"
                         font.pixelSize: 20
-                        font.bold: true
-                        icon.source: "qrc:/images/money.png"
-                        icon.height: btnMoney.height*0.82
-                        icon.width: btnMoney.height*0.82
                         onClicked: {
-                            pay = "dinheiro"
-                            titleBar.title = "Para facilitar o troco, informe quanto será pago"
-                            columnChange.visible = true
-                            fieldChange.focus = true
-                            btnMoney.visible = false
-                            btnCard.visible = false
-                          //  nextButton.visible = true
-                            recKey.visible = true
+                            stackView.pop()
                         }
                     }
-                    // COLOCAR AQUI !!!
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 5
+                        RoundButton {
+                            id: btnMoney
+                            height: container.height*0.35
+                            width: container.width*0.45
+                            text: "Dinheiro"
+                            font.family: "Roboto"
+                            focus: true
+                            Material.background: "#5cb860"
+                            Material.foreground: "white"
+                            font.pixelSize: 20
+                            font.bold: true
+                            icon.source: "qrc:/images/money.png"
+                            icon.height: btnMoney.height*0.82
+                            icon.width: btnMoney.height*0.82
+                            onClicked: {
+                                pay = "dinheiro"
+                                titleBar.title = "Para facilitar o troco, informe quanto será pago"
+                                columnChange.visible = true
+                                fieldChange.focus = true
+                                btnMoney.visible = false
+                                btnCard.visible = false
+                                //  nextButton.visible = true
+                                recKey.visible = true
+                            }
+                        }
+                        // COLOCAR AQUI !!!
 
+                        RoundButton {
+                            id: btnCard
+                            height: container.height*0.35
+                            width: container.width*0.45
+                            text: "Cartão"
+                            font.family: "Roboto"
+                            focus: true
+                            Material.background: "#5cb860"
+                            Material.foreground: "white"
+                            font.pixelSize: 20
+                            font.bold: true
+                            icon.source: "qrc:/images/card.png"
+                            icon.height: btnCard.height*0.82
+                            icon.width: btnCard.height*0.82
+                            onClicked: {
+                                pay = "cartao"
+                                titleBar.title = "Informe seu nome para ser chamado"
+                                recKey.visible = true
+                                keyBoard.nextButton.text = "Finalizar"
+                                btnMoney.visible = false
+                                btnCard.visible = false
+                                columnChange.visible = false
+                                fieldName.visible = true
+                                fieldName.focus = true
+                            }
+                        }
+                    }
                     Rectangle{
                         id: recKey
                         visible: false
@@ -173,32 +218,7 @@ Item {
                         }
                     }
 
-                    RoundButton {
-                        id: btnCard
-                        height: container.height*0.35
-                        width: container.width*0.45
-                        text: "Cartão"
-                        font.family: "Roboto"
-                        focus: true
-                        Material.background: "#5cb860"
-                        Material.foreground: "white"
-                        font.pixelSize: 20
-                        font.bold: true
-                        icon.source: "qrc:/images/card.png"
-                        icon.height: btnCard.height*0.82
-                        icon.width: btnCard.height*0.82
-                        onClicked: {
-                            pay = "cartao"
-                            titleBar.title = "Informe seu nome para ser chamado"
-                            recKey.visible = true
-                            keyBoard.nextButton.text = "Finalizar"
-                            btnMoney.visible = false
-                            btnCard.visible = false
-                            columnChange.visible = false
-                            fieldName.visible = true
-                            fieldName.focus = true
-                        }
-                    }
+
 
                 }
             }

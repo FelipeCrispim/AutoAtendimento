@@ -44,7 +44,7 @@ Rectangle {
         text: root.title
         color: "white"
         font.family: "Roboto"
-        font.pixelSize: 23
+        font.pixelSize: 25
         font.bold: true
     }
 }
