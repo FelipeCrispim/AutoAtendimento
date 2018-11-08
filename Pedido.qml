@@ -434,7 +434,7 @@ Item {
                             width: listResultado.width; height: listResultado.height/4
                             // color: "grey"
                             clip: true
-
+                            visible: (addTrans.running && index >2) ? false: true
                             Text {
                                 id: textListResultado
                                 text: textResultado
