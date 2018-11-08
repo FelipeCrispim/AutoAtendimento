@@ -358,8 +358,8 @@ Item {
         }
 
         Rectangle {
-            height: parent.height*0.93
-            width: parent.width*0.46
+            height: recPaneResultado.height
+            width: recPaneResultado.width
             anchors.right: parent.right
             anchors.rightMargin: 10
             anchors.top: paneResultado.top
@@ -373,8 +373,8 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 20
             anchors.verticalCenter: parent.verticalCenter
-            //            clip: true
             Material.elevation: 13
+            color: "transparent"
             TitleBar {
                 title: "Seu pedido final"
                 height: 70
@@ -382,186 +382,184 @@ Item {
                 anchors.top: paneResultado.top
                 z: 1
             }
-            Rectangle{
-                id: recPaneResultado
-                height: parent.height * 0.7
+            Column {
+                height: parent.height
                 width: parent.width
-                //border.color: "black"
-                clip: addTrans.running? false: true
-                ListView{
-                    id: listResultado
-                    anchors.fill: parent
-                    topMargin: 80
-                    //                    anchors.margins: 10
-                    model: ListModel{}
-                    //                    spacing: 2
-                    property int mouseY: 0
-                    add: Transition {
-                        id: addTrans
-
-                        //                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 4000 }
-                        NumberAnimation {property: "scale"; from: 0.1; to: 1.0; duration: 800}
-                        PathAnimation {
-                            duration: 500
-                            path: Path {
-                                startX: -root.width*0.55//addTrans.ViewTransition.destination.x + 200
-                                startY: listResultado.mouseY//addTrans.ViewTransition.destination.y + 200
-                                //                        PathCurve { relativeX: -100; relativeY: -50 }
-                                //                        PathCurve { relativeX: 50; relativeY: -150 }
-                                PathCurve {
-                                    x: addTrans.ViewTransition.destination.x
-                                    y: addTrans.ViewTransition.destination.y
-                                }
-                            }
-                        }
-                    }
-                    displaced: Transition {
-                        id: dispTrans
-                        SequentialAnimation {
-                            PauseAnimation {
-                                duration: (dispTrans.ViewTransition.index -
-                                           dispTrans.ViewTransition.targetIndexes[0]) * 100
-                            }
-                            NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
-                        }
-                    }
-                    delegate: Rectangle{
-                        //  property int indexx: 0
-                        id: recListResultado
-                        width: listResultado.width; height: listResultado.height/4
-                        // color: "grey"
-                        clip: true
-
-                        Text {
-                            id: textListResultado
-                            text: textResultado
-                            wrapMode: Text.WordWrap
-                            width: recListResultado.width*0.65
-                            font.family: "Roboto"
-                            font.pixelSize: 20
-                            anchors.left: recListResultado.left
-                            anchors.leftMargin: 10
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                        Text {
-                            id: textValorListResultado
-                            text: '<b>R$: ' + valorResultado + '</b>';
-                            anchors.right: trashIcon.left
-                            anchors.rightMargin: 5
-                            font.family: "Roboto"
-                            font.pixelSize: 20
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                        Image {
-                            id: trashIcon
-                            source: "qrc:/images/trash.png"
-                            anchors.right: recListResultado.right
-                            anchors.rightMargin: recListResultado.width*0.01
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: 40
-                            height: 35
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    var stop = 1
-                                    var indexx = 0
-                                    while(stop == 1){
-                                        if(listResultado.model.get(indexx).textResultado == textResultado){
-                                            stop = 0
-                                        }
-                                        else{
-                                            indexx++
-                                        }
-                                    }
-                                    valorFinal = valorFinal - parseFloat(listResultado.model.get(indexx).valorResultado)
-                                    listResultado.model.remove(indexx)
-                                    creatjson.removeProduct(indexx)
-                                }
-                            }
-                        }
-                        Rectangle {
-                            width: parent.width-10
-                            height: 2
-                            color: "#22333333"
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.bottom: parent.bottom
-                        }
-                    }
-                }
-            }
-            Rectangle{
-                id: recPaneFinalizarResultado
-                height: paneResultado.height*0.3
-                width: parent.width
-                anchors.top: recPaneResultado.bottom
-                anchors.topMargin: -10
-                anchors.horizontalCenter: parent.horizontalCenter
-                // color: "#DCDCDC"
-                border.pixelAligned: true
-
-                Rectangle{
-                    color: "#88FF9800"
-                    anchors.top: parent.top
-                    anchors.left: parent.left
+                spacing: paneResultado.height*0.04
+                Rectangle {
+                    id: recPaneResultado
+                    height: parent.height* 0.7
                     width: parent.width
-                    height: parent.height*0.1
-                }
+                    //border.color: "black"
+                    clip: addTrans.running? false: true
+                    ListView{
+                        id: listResultado
+                        anchors.fill: parent
+                        topMargin: 80
+                        model: ListModel{}
+                        //                    spacing: 2
+                        property int mouseY: 0
+                        add: Transition {
+                            id: addTrans
 
-                Text {
-                    id: textValorFinalResultado
-                    //anchors.left: parent.left
-                    //anchors.leftMargin: parent.height*0.1
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.topMargin: parent.height*0.25
-                    font.family: "Roboto"
-                    font.pixelSize: 20
-                    text: "<b> Valor Total R$: " + valorFinal + "</b>"
+                            //                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 4000 }
+                            NumberAnimation {property: "scale"; from: 0.1; to: 1.0; duration: 800}
+                            PathAnimation {
+                                duration: 500
+                                path: Path {
+                                    startX: -root.width*0.55//addTrans.ViewTransition.destination.x + 200
+                                    startY: listResultado.mouseY//addTrans.ViewTransition.destination.y + 200
+                                    //                        PathCurve { relativeX: -100; relativeY: -50 }
+                                    //                        PathCurve { relativeX: 50; relativeY: -150 }
+                                    PathCurve {
+                                        x: addTrans.ViewTransition.destination.x
+                                        y: addTrans.ViewTransition.destination.y
+                                    }
+                                }
+                            }
+                        }
+                        displaced: Transition {
+                            id: dispTrans
+                            SequentialAnimation {
+                                PauseAnimation {
+                                    duration: (dispTrans.ViewTransition.index -
+                                               dispTrans.ViewTransition.targetIndexes[0]) * 100
+                                }
+                                NumberAnimation { properties: "x,y"; duration: 400; easing.type: Easing.OutBounce }
+                            }
+                        }
+                        delegate: Rectangle{
+                            //  property int indexx: 0
+                            id: recListResultado
+                            width: listResultado.width; height: listResultado.height/4
+                            // color: "grey"
+                            clip: true
 
-                }
-
-                Row {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: parent.bottom
-                    spacing: (parent.width - finalizarButton.width*2)/3
-
-
-                    RoundButton {
-                        id: cancelarButton
-                        height: paneResultado.height *0.13
-                        width: paneResultado.width * 0.4
-                        text: "Cancelar"
-                        font.family: "Roboto"
-                        font.bold: true
-                        focus: true
-                        Material.background: "#ef494e"//"#ED3237"
-                        Material.foreground: "white"
-                        font.pixelSize: 20
-                        onClicked: {
-                            creatjson.clearJson()
-                            listResultado.model.clear()
-                            pedidofinal1 = ""
-                            listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
-                            pedidofinal2 = ""
-                            valorFinal = 0
-                            stackView.pop()
-
+                            Text {
+                                id: textListResultado
+                                text: textResultado
+                                wrapMode: Text.WordWrap
+                                width: recListResultado.width*0.65
+                                font.family: "Roboto"
+                                font.pixelSize: 20
+                                anchors.left: recListResultado.left
+                                anchors.leftMargin: 10
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                id: textValorListResultado
+                                text: '<b>R$: ' + valorResultado + '</b>';
+                                anchors.right: trashIcon.left
+                                anchors.rightMargin: 5
+                                font.family: "Roboto"
+                                font.pixelSize: 20
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Image {
+                                id: trashIcon
+                                source: "qrc:/images/trash.png"
+                                anchors.right: recListResultado.right
+                                anchors.rightMargin: recListResultado.width*0.01
+                                anchors.verticalCenter: parent.verticalCenter
+                                width: 40
+                                height: 35
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        var stop = 1
+                                        var indexx = 0
+                                        while(stop == 1){
+                                            if(listResultado.model.get(indexx).textResultado == textResultado){
+                                                stop = 0
+                                            }
+                                            else{
+                                                indexx++
+                                            }
+                                        }
+                                        valorFinal = valorFinal - parseFloat(listResultado.model.get(indexx).valorResultado)
+                                        listResultado.model.remove(indexx)
+                                        creatjson.removeProduct(indexx)
+                                    }
+                                }
+                            }
+                            Rectangle {
+                                width: parent.width-10
+                                height: 2
+                                color: "#22333333"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                            }
                         }
                     }
-                    RoundButton {
-                        id: finalizarButton
-                        height: paneResultado.height *0.13
-                        width: paneResultado.width * 0.4
-                        enabled: rootPed.valorFinal == 0? false : true
-                        text: "Finalizar"
-                        font.family: "Roboto"
-                        font.bold: true
-                        focus: true
-                        Material.background: "#5cb860"//"#4CAF50"
-                        Material.foreground: "white"
-                        font.pixelSize: 20
-                        onClicked: {
-                            stackView.push(telaPagamento,{"tValue": valorFinal})
+                }
+                Rectangle{
+                    id: recPaneFinalizarResultado
+                    height: paneResultado.height*0.26
+                    width: parent.width
+                    border.pixelAligned: true
+                    Rectangle {
+                        z: -1
+                        height: recPaneFinalizarResultado.height
+                        width: recPaneFinalizarResultado.width
+                        anchors.right: parent.right
+                        anchors.rightMargin: -10
+                        anchors.top: recPaneFinalizarResultado.top
+                        anchors.topMargin: 10
+                        color: "#33000000"
+                    }
+                    Column {
+                        spacing: height*0.15
+                        anchors.centerIn: parent
+                        Text {
+                            id: textValorFinalResultado
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.family: "Roboto"
+                            font.pixelSize: 20
+                            text: "<b> Valor Total R$: " + valorFinal + "</b>"
+                        }
+
+                        Row {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            spacing: (parent.width - finalizarButton.width*2)/3
+
+                            RoundButton {
+                                id: cancelarButton
+                                height: paneResultado.height *0.13
+                                width: paneResultado.width * 0.4
+                                text: "Cancelar"
+                                font.family: "Roboto"
+                                font.bold: true
+                                focus: true
+                                Material.background: "#ef494e"//"#ED3237"
+                                Material.foreground: "white"
+                                font.pixelSize: 20
+                                onClicked: {
+                                    creatjson.clearJson()
+                                    listResultado.model.clear()
+                                    pedidofinal1 = ""
+                                    listpedidofinal.produto = ""; listpedidofinal.quantidade = ""; listpedidofinal.valor = ""; listpedidofinal.acompanhamento= ""
+                                    pedidofinal2 = ""
+                                    valorFinal = 0
+                                    stackView.pop()
+
+                                }
+                            }
+                            RoundButton {
+                                id: finalizarButton
+                                height: paneResultado.height *0.13
+                                width: paneResultado.width * 0.4
+                                enabled: rootPed.valorFinal == 0? false : true
+                                text: "Finalizar"
+                                font.family: "Roboto"
+                                font.bold: true
+                                focus: true
+                                Material.background: "#5cb860"//"#4CAF50"
+                                Material.foreground: "white"
+                                font.pixelSize: 20
+                                onClicked: {
+                                    stackView.push(telaPagamento,{"tValue": valorFinal})
+                                }
+                            }
                         }
                     }
                 }
