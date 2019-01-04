@@ -7,6 +7,7 @@ Item {
     id: rootPed
     height: root.height
     width: root.width
+
     property var listpedidofinal: {"produto": "", "quantidade": "", "valor": "", "acompanhamento": ""}
     property var pedidofinal1: ""
     property var pedidofinal2: ""
@@ -134,7 +135,6 @@ Item {
             }
         }
     }
-
 
     Rectangle{
         id: recPopUp
@@ -497,6 +497,7 @@ Item {
                     height: paneResultado.height*0.26
                     width: parent.width
                     border.pixelAligned: true
+
                     Rectangle {
                         z: -1
                         height: recPaneFinalizarResultado.height
@@ -524,7 +525,7 @@ Item {
 
                             RoundButton {
                                 id: cancelarButton
-                                height: paneResultado.height *0.13
+                                height: paneResultado.height *0.125
                                 width: paneResultado.width * 0.4
                                 text: "Cancelar"
                                 font.family: "Roboto"
@@ -546,7 +547,7 @@ Item {
                             }
                             RoundButton {
                                 id: finalizarButton
-                                height: paneResultado.height *0.13
+                                height: paneResultado.height *0.125
                                 width: paneResultado.width * 0.4
                                 enabled: rootPed.valorFinal == 0? false : true
                                 text: "Finalizar"

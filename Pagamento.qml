@@ -174,6 +174,7 @@ Item {
                                 fieldChange.focus = true
                                 btnMoney.visible = false
                                 btnCard.visible = false
+                                cancelarButton.visible = false
                                 //  nextButton.visible = true
                                 recKey.visible = true
                             }
@@ -201,6 +202,7 @@ Item {
                                 keyBoard.nextButton.text = "Finalizar"
                                 btnMoney.visible = false
                                 btnCard.visible = false
+                                cancelarButton.visible = false
                                 columnChange.visible = false
                                 fieldName.visible = true
                                 fieldName.focus = true
