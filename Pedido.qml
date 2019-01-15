@@ -16,15 +16,51 @@ Item {
     property var valorFinal: 0
     ListModel{
         id: contactModel
-        ListElement { produto: "Executivo de Galeto"; valor: "13.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Boi";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Porco";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Calabresa";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo de Galinha Guisada   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Coxa e SobreCoxa";    valor: "6.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "Executivo de Galeto"; valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Exe. de Galeto Gratinado   ";    valor: "15.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Galinha Guisada   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Boi";    valor: "17.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Boi Guisado   ";    valor: "15.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Carneiro Guisado   ";    valor: "17.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Porco";    valor: "16.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Calabresa";    valor: "13.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto/Boi)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto Grat/Boi)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto Grat/Porco)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Galeto Grat/Calabresa)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Boi/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Boi/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo mista(Porco/calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+
+        ListElement { produto: "Coxa e SobreCoxa";    valor: "7.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/2 Galeto";   valor: "11.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Gratinado";   valor: "8.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Boi";   valor: "9.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Porco";   valor: "9.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa de Frango";   valor: "2.50"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa mista";   valor: "2.00"; tipo: 2; chave: "Carnes"}
-        ListElement { produto: "Coca-Cola 2l";    valor: "8.50"; tipo: 2; chave: "Bebidas"}
+
+        ListElement { produto: "Laranja 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Laranja 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Laranja 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Polpa(Peça e aguarde na mesa) 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Polpa(Peça e aguarde na mesa) 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Polpa(Peça e aguarde na mesa) 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Coca-Cola 2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Guaraná   2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Fanta     2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Coca-Cola 1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Guaraná   1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Fanta     1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Pepsi     1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Coca-Cola Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Coca-Cola Zero Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Guaraná Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Guaraná Zero Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Pepsi Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Fanta Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
     }
 
     Component {
