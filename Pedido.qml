@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.1
 import QtGraphicalEffects 1.0
 
@@ -42,25 +42,12 @@ Item {
         ListElement { produto: "Calabresa de Frango";   valor: "2.50"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa mista";   valor: "2.00"; tipo: 2; chave: "Carnes"}
 
-        ListElement { produto: "Laranja 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Laranja 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Laranja 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Polpa(Peça e aguarde na mesa) 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Polpa(Peça e aguarde na mesa) 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Polpa(Peça e aguarde na mesa) 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Coca-Cola 2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Guaraná   2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Fanta     2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Coca-Cola 1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Guaraná   1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Fanta     1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Pepsi     1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Coca-Cola Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Coca-Cola Zero Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Guaraná Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Guaraná Zero Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Pepsi Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
-        ListElement { produto: "Fanta Lata";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Suco 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Suco 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Suco 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Refrigerante 2L";    valor: "9.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Refrigerante 1L";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
+        ListElement { produto: "Refrigerante 500ml";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
     }
 
     Component {
@@ -164,6 +151,23 @@ Item {
                         pedidofinal2 = pedidofinal2 + produto
                         listpedidofinal.produto = produto
                         auxvalor2 = valor
+                        rowPopUp.topPadding = 0
+                        drinkText.visible = true
+                        drinkColumn.visible = true
+                        recPopUp2.height = rootPed.height*0.9
+
+                        if(produto.includes("Suco"))
+                            drinks.model = ["Laranja", "Tangerina", "Acerola", "Goiaba", "Maracujá"]
+                        else if(produto.includes("Refrigerante"))
+                            drinks.model = ["Coca-Cola", "Coca-Cola Zero", "Guaraná", "Pepsi", "Fanta"]
+                        else {
+                            rowPopUp.topPadding = 50
+                            drinkText.visible = false
+                            drinkColumn.visible = false
+                            recPopUp2.height = rootPed.height*0.7
+                            drinks.model = [""]
+                        }
+
                         popUpPedido2.open()
                     }
 
@@ -184,8 +188,8 @@ Item {
 
         Rectangle{
             id: recPopUp2
-            height: parent.height*0.6
-            width: parent.width*0.8
+            height: parent.height*0.9
+            width: parent.width
             anchors.centerIn: parent
 
             Popup{
@@ -204,12 +208,11 @@ Item {
                 Column{
                     id: columnPedido2
                     anchors.centerIn: parent
-                    spacing: parent.height*0.07
+                    spacing: parent.height*0.05
 
                     Label{
                         id: labelPedido2
-                        text: "Escolha a quantidade"
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: "Escolha a quantidade:"
                         font.family: "Roboto"
                         font.pixelSize: 22
                     }
@@ -223,7 +226,37 @@ Item {
                         value: 1
                         from: 1
                     }
+
+                    Text {
+                        id: drinkText
+                        text: qsTr("Escolha o tipo:")
+                        font.family: "Roboto"
+                        font.pixelSize: 22
+                    }
+
+                    ButtonGroup {
+                        id: drinkGroup
+                        buttons: drinkColumn.children
+                    }
+                    Column{
+                        id: drinkColumn
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: 20
+                        Repeater {
+                            id: drinks
+                            onModelChanged: drinkColumn.children[0].checked = true
+                            RadioButton{
+                                id: drinkbutton
+                                text: modelData
+                                font.pixelSize: 20
+                                font.family: "Roboto"
+                                height: 20
+                            }
+                        }
+                    }
+
                     Row {
+                        id: rowPopUp
                         spacing: (popUpPedido2.width - buttonOrder2.width*2)/3
                         RoundButton{
                             height: popUpPedido2.height*0.2
@@ -248,6 +281,7 @@ Item {
                             font.pixelSize: 20
                             onClicked: {
                                 if(spinPedido2.value != 0){
+                                    pedidofinal2 = pedidofinal2 + " " + drinkGroup.checkedButton.text
                                     pedidofinal2 = spinPedido2.value + "x " + pedidofinal2
                                     var aux1 = 0
                                     var aux2 = 0
@@ -257,7 +291,7 @@ Item {
                                     aux2 = parseFloat(spinPedido2.value)
                                     aux1 = aux1 * aux2
                                     listpedidofinal.quantidade = spinPedido2.value; listpedidofinal.valor = aux1;
-                                    creatjson.addNewProduct(listpedidofinal.produto,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
+                                    creatjson.addNewProduct(pedidofinal2,listpedidofinal.quantidade,listpedidofinal.valor,listpedidofinal.acompanhamento)
                                     auxvalor2 = aux1.toString()
                                     while(i < auxvalor2.length){
                                         charr = auxvalor2.charAt(i)
@@ -338,6 +372,7 @@ Item {
             TitleBar {
                 id: titleBar
                 title: "Clique no que deseja"
+                icon: "qrc:/images/list.png"
                 height: 70
                 width: parent.width
                 anchors.top: panePedido.top
@@ -413,6 +448,7 @@ Item {
             color: "transparent"
             TitleBar {
                 title: "Seu pedido final"
+                icon: "qrc:/images/cart.png"
                 height: 70
                 width: parent.width
                 anchors.top: paneResultado.top

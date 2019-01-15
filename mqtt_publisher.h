@@ -7,7 +7,7 @@
 #define MAX_PAYLOAD 80
 #define MQTT_PORT 1883
 #define DEFAULT_KEEP_ALIVE 60
-#define BROKER_ADDRESS "192.168.0.52"
+#define BROKER_ADDRESS "192.168.25.125"
 
 #define CLIENT_ID "ANDROID"
 #define MQTT_TOPIC "testTopic"

@@ -10,5 +10,7 @@
         <file>images/error.png</file>
         <file>images/gear.png</file>
         <file>images/delete.png</file>
+        <file>images/cart.png</file>
+        <file>images/list.png</file>
     </qresource>
 </RCC>
