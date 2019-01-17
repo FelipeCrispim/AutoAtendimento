@@ -17,31 +17,34 @@ Item {
     ListModel{
         id: contactModel
         ListElement { produto: "Executivo de Galeto"; valor: "14.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Exe. de Galeto Gratinado   ";    valor: "15.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Galinha Guisada   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo de Galeto Gratinado   ";    valor: "15.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Executivo Galinha Guisada   ";    valor: "14.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Boi";    valor: "17.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Boi Guisado   ";    valor: "15.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Carneiro Guisado   ";    valor: "17.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Porco";    valor: "16.00"; tipo: 1; chave: "Executivos"}
         ListElement { produto: "Executivo de Calabresa";    valor: "13.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto/Boi)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto Grat/Boi)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto Grat/Porco)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Galeto Grat/Calabresa)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Boi/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Boi/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
-        ListElement { produto: "Executivo mista(Porco/calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto/Boi)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto Gratinado/Boi)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto Gratinado/Porco)   ";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Galeto Grat/Calabresa)";    valor: "22.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Boi/Porco)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Boi/Calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
+        ListElement { produto: "Mista(Porco/calabresa)   ";    valor: "21.00"; tipo: 1; chave: "Executivos"}
 
-        ListElement { produto: "Coxa e SobreCoxa";    valor: "7.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Galeto(Coxa)";    valor: "7.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Galeto(Peito)";    valor: "7.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "1/2 Galeto";   valor: "11.00"; tipo: 2; chave: "Carnes"}
-        ListElement { produto: "1/4 Gratinado";   valor: "8.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Galeto Gratinado(Coxa)";   valor: "8.00"; tipo: 2; chave: "Carnes"}
+        ListElement { produto: "1/4 Galeto Gratinado(Peito)";    valor: "7.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "1/4 Boi";   valor: "9.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "1/4 Porco";   valor: "9.00"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa de Frango";   valor: "2.50"; tipo: 2; chave: "Carnes"}
         ListElement { produto: "Calabresa mista";   valor: "2.00"; tipo: 2; chave: "Carnes"}
 
+        ListElement { produto: "Água Mineral";    valor: "2.00"; tipo: 2; chave: "Bebidas"}
         ListElement { produto: "Suco 1L";    valor: "12.00"; tipo: 2; chave: "Bebidas"}
         ListElement { produto: "Suco 500mL";    valor: "6.00"; tipo: 2; chave: "Bebidas"}
         ListElement { produto: "Suco 300mL";    valor: "4.00"; tipo: 2; chave: "Bebidas"}
@@ -123,7 +126,7 @@ Item {
                 onClicked: {
                     var positionInWindow = mapToItem(root.contentItem, mouse.x, mouse.y)
                     listResultado.mouseY = positionInWindow.y-150//recDelegate.y-20
-                    console.log("Teste: ", listResultado.mouseY)
+                    //console.log("Teste: ", listResultado.mouseY)
                     if(tipo === 1){
                         pedidofinal1 = pedidofinal1 + produto + "\n"
                         auxvalor1 = valor
