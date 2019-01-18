@@ -1,4 +1,4 @@
-QT += qml quick svg
+QT += qml quick svg core
 QT += network
 CONFIG += c++11
 

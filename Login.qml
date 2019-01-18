@@ -83,46 +83,26 @@ Item {
             anchors.centerIn: parent
         }
     }
+
     Rectangle{
-        id: recTopGear
-        width: parent.width
-        height: parent.height*0.15
-        color: "transparent"
+        id: recGear
+        height: parent.height*0.2
+        width: parent.width*0.2
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        Rectangle{
-            id: recGear
-            height: parent.height*0.6
-            width: parent.width*0.1
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.rightMargin: parent.width*0.05
-            color: "transparent"
-            visible: false
-            //color: "red"
-            Image {
-                id: imageGear
-                source:"qrc:/images/gear.png"
-                anchors.centerIn: parent
-                fillMode: Image.PreserveAspectFit
-            }
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    adminPopup.open()
-                }
-            }
-        }
+        color: "transparent"
+        //color: "red"
+//        Image {
+//            id: imageGear
+//            source:"qrc:/images/gear.png"
+//            anchors.centerIn: parent
+//            fillMode: Image.PreserveAspectFit
+//        }
         MouseArea{
             anchors.fill: parent
             onDoubleClicked: {
-                recGear.visible = !recGear.visible
-                /*   if(recTopGear.visible == false){
-                    recTopGear.visible = true
-                }
-                else{
-                    recTopGear.visible = false
-               }*/
+//                adminPopup.open()
+                creatjson.report()
             }
         }
     }

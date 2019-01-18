@@ -22,6 +22,7 @@ public:
     Q_INVOKABLE void removeProduct(int index);
     Q_INVOKABLE void clearJson();
     Q_INVOKABLE bool finishOrder();
+    Q_INVOKABLE void report();
     QJsonArray jsonArray;
 public slots:
 };

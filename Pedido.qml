@@ -285,7 +285,7 @@ Item {
                             onClicked: {
                                 if(spinPedido2.value != 0){
                                     pedidofinal2 = pedidofinal2 + " " + drinkGroup.checkedButton.text
-                                    pedidofinal2 = spinPedido2.value + "x " + pedidofinal2
+//                                    pedidofinal2 = spinPedido2.value + "x " + pedidofinal2
                                     var aux1 = 0
                                     var aux2 = 0
                                     var i = 0
