@@ -115,7 +115,7 @@ Item {
                                 horizontalAlignment: TextInput.AlignHCenter
                                 maximumLength: 5
                                 //inputMask: "0000"
-                                validator: IntValidator {}
+                                validator: IntValidator {bottom: tValue;}
                             }
                         }
                     }

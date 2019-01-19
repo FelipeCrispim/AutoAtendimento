@@ -38,6 +38,7 @@ Item {
                             onClicked: {
                                 if(fieldChange.visible){
                                     fieldChange.text = fieldChange.text + modelData
+
                                 }
                             }
                             onPressed: {
@@ -244,8 +245,10 @@ Item {
                     id: nextButton
                    // visible: false
                     enabled: {
-                        if(columnChange.visible == true)
-                            return fieldChange.text == "" ? false:true
+                        if(columnChange.visible == true){
+                            fieldChange.acceptableInput ? fieldChange.color = "#5cb860" : fieldChange.color = "red"
+                            return fieldChange.acceptableInput ? true :false
+                        }
                         else
                             return fieldName.text == "" ? false:true
                     }
