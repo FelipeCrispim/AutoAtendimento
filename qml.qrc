@@ -8,5 +8,6 @@
         <file>TitleBar.qml</file>
         <file>CustomDialog.qml</file>
         <file>KeyBoard.qml</file>
+        <file>workerscript.js</file>
     </qresource>
 </RCC>

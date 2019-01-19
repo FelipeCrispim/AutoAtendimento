@@ -12,7 +12,7 @@ Item {
     property string name: ""
     property string change: ""
     Timer {
-        id: timer
+        id: timerGif
         interval: 5000; running: false; repeat: false
         onTriggered: {
             stackView.restart()
@@ -61,7 +61,7 @@ Item {
                     width: parent.parent.width
                     wrapMode: Text.WordWrap
                     horizontalAlignment: Text.AlignHCenter
-                    text: "Aguarde na mesa. Seu nome será chamado."
+                    text: ""
                     font.bold: true
                     font.family: "Roboto"
                     font.pixelSize: 25

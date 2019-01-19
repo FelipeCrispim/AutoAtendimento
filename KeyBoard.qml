@@ -7,6 +7,42 @@ Item {
     property alias nextButton: nextButton
     width: parent.width
     height: parent.height
+
+    Timer {
+        id: timerWait
+        interval: 500; running: false; repeat: false
+
+        onTriggered: {
+            console.log("indo...")
+            name = fieldName.text
+            change = fieldChange.text
+            creatjson.addClient(name, pay,change, tValue)
+            if(creatjson.finishOrder()) {
+                titleBar.title = "Pedido feito corretamente"
+                msgValidate.text = "Aguarde na mesa. Seu nome será chamado."
+                animCheck.playing = true
+                timerGif.start()
+            } else {
+                titleBar.title = "Erro no pedido"
+                msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
+                animCheck.source = "qrc:/images/error.png"
+
+            }
+
+            name = ""
+            pay = ""
+            change = ""
+        }
+        onRunningChanged: {
+            if(running == true) {
+                buttonsRow.visible = false
+                columnPagamento.visible = false
+                columnValidate.visible = true
+                titleBar.title = "Aguarde, fazendo pedido..."
+            }
+
+        }
+    }
     Rectangle{
         height: parent.height
         width: parent.width
@@ -17,7 +53,7 @@ Item {
             id: lineZero
             height: parent.height*0.24; width: parent.width*0.8
             anchors.left: parent.left; anchors.top: parent.top; anchors.leftMargin: parent.width*0.1;anchors.topMargin: parent.width*0.001
-         //   border.color: "black"
+            //   border.color: "black"
             Row{
                 spacing: 1
                 Repeater {
@@ -59,7 +95,7 @@ Item {
             id: lineOne
             height: parent.height*0.24; width: parent.width*0.8
             anchors.left: parent.left; anchors.top: lineZero.bottom; anchors.topMargin: parent.height*0.01; anchors.leftMargin: parent.width*0.05
-          //  border.color: "black"
+            //  border.color: "black"
             Row{
                 spacing: 1
                 Repeater {
@@ -173,7 +209,7 @@ Item {
             anchors.left: parent.left; anchors.top: lineTwo.bottom; anchors.topMargin: parent.height*0.01; anchors.leftMargin:  parent.height*0.06
             Row{
                 spacing: 1
-             /*   RoundButton{
+                /*   RoundButton{
                     height: lineThree.height; width: lineThree.width*0.2
                     text: "Cancelar"
                     font.bold: true
@@ -243,7 +279,7 @@ Item {
 
                 RoundButton {
                     id: nextButton
-                   // visible: false
+                    // visible: false
                     enabled: {
                         if(columnChange.visible == true){
                             fieldChange.acceptableInput ? fieldChange.color = "#5cb860" : fieldChange.color = "red"
@@ -262,26 +298,28 @@ Item {
                     height: lineThree.height; width: lineThree.width*0.22
                     onClicked: {
                         if(nextButton.text == "Finalizar"){
-                            name = fieldName.text
-                            change = fieldChange.text
-                            creatjson.addClient(name, pay,change, tValue)
-                            buttonsRow.visible = false
-                            columnPagamento.visible = false
-                            columnValidate.visible = true
-                            if(creatjson.finishOrder()) {
-                                titleBar.title = "Pedido feito corretamente"
-                                animCheck.playing = true
-                                timer.start()
-                            } else {
-                                titleBar.title = "Erro no pedido"
-                                msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
-                                animCheck.source = "qrc:/images/error.png"
+                            timerWait.running = true
+//                                                        name = fieldName.text
+//                                                        change = fieldChange.text
+//                                                        creatjson.addClient(name, pay,change, tValue)
+//                                                        buttonsRow.visible = false
+//                                                        columnPagamento.visible = false
+//                                                        columnValidate.visible = true
+//                                                        if(creatjson.finishOrder()) {
+//                                                            titleBar.title = "Pedido feito corretamente"
+//                                                            msgValidate.text = "Aguarde na mesa. Seu nome será chamado."
+//                                                            animCheck.playing = true
+//                                                            timerGif.start()
+//                                                        } else {
+//                                                            titleBar.title = "Erro no pedido"
+//                                                            msgValidate.text = "Por favor, chame um de nossos atendentes para verificar o ocorrido."
+//                                                            animCheck.source = "qrc:/images/error.png"
 
-                            }
+//                                                        }
 
-                            name = ""
-                            pay = ""
-                            change = ""
+//                                                        name = ""
+//                                                        pay = ""
+//                                                        change = ""
                         }
                         if(columnChange.visible == true) {
                             titleBar.title = "Informe seu nome para ser chamado"
