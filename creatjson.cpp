@@ -2,6 +2,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QDate>
+#include <QDateTime>
 
 int MOSQ_SUCCESS = 0;
 QString m_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
@@ -33,7 +34,8 @@ void Creatjson::addClient(QString name, QString pay, QString change, QString tot
         {"pay", pay},
         {"change", change},
         {"id", id},
-        {"totalValue", totalValue}
+        {"totalValue", totalValue},
+        {"date", QDateTime::currentDateTime().toString("dd-MM-yyyy hh:mm")}
     };
 
     if(pay.contains("cartao")){
@@ -103,9 +105,9 @@ void Creatjson::report()
         {"pay", temp},
         {"change", ""},
         {"id", ""},
-        {"totalValue", ""}
+        {"totalValue", ""},
+        {"date", QDateTime::currentDateTime().toString("dd-MM-yyyy hh:mm")}
     };
-
 
     todayMoneyNote = 0;
     todayMoneyCredit = 0;

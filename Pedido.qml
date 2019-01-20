@@ -14,6 +14,16 @@ Item {
     property var auxvalor1: ""
     property var auxvalor2: ""
     property var valorFinal: 0
+
+    Timer {
+        id: backToBegin
+        interval: 600000; running: true; repeat: true
+        onTriggered: {
+            console.log("clear")
+            stackView.restart()
+        }
+    }
+
     ListModel{
         id: contactModel
         ListElement { produto: "Executivo de Galeto"; valor: "14.00"; tipo: 1; chave: "Executivos"}
